@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Seal from "./Seal";
-import { PatternLayer, GoldRule, Arabesque } from "./Ornaments";
+import { PatternLayer, GoldRule } from "./Ornaments";
 import { nav, site } from "@/lib/site";
 
 export default function Footer() {
@@ -10,8 +10,29 @@ export default function Footer() {
 
       <div className="footer-main cert-border">
         <div className="container">
-          <div className="footer-seal">
-            <Seal id="seal-footer" size={132} title="Qazi Marriage Celebrant" />
+          {/* Seal and closing verse share one row — the verse sits in the
+              ground that would otherwise be empty either side of the seal. */}
+          <div className="footer-top">
+            <div className="footer-seal">
+              <Seal
+                id="seal-footer"
+                size={132}
+                title="Qazi Marriage Celebrant"
+              />
+            </div>
+
+            {/* Quranic verse — Placement 3.
+                [VERIFY WITH CLIENT] Arabic text and English translation */}
+            <section className="footer-verse" aria-label="Closing verse">
+              <p className="arabic-line" dir="rtl" lang="ar">
+                وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ
+              </p>
+
+              <GoldRule style={{ width: "min(100%, 220px)" }} />
+
+              <p className="verse-en">“And of all things We created pairs”</p>
+              <p className="verse-ref">Surah Adh-Dhariyat · 51:49</p>
+            </section>
           </div>
 
           <div className="footer-cols">
@@ -65,26 +86,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Quranic verse strip — Placement 3.
-          Set on the footer's own ground rather than a pale band, so it closes
-          the page instead of cutting it in two. */}
-      {/* [VERIFY WITH CLIENT] Arabic text and English translation */}
-      <section className="footer-verse" aria-label="Closing verse">
-        <div className="container">
-          <Arabesque className="center-block" />
-          <p className="eyebrow">◆ The Verse We Close With</p>
-
-          <p className="arabic-line" dir="rtl" lang="ar">
-            وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ
-          </p>
-
-          <GoldRule style={{ width: "min(100%, 220px)" }} />
-
-          <p className="verse-en">“And of all things We created pairs”</p>
-          <p className="verse-ref">Surah Adh-Dhariyat · 51:49</p>
-        </div>
-      </section>
 
       <div className="footer-bottom">
         © 2026 {site.name} · All Rights Reserved

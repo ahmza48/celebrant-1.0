@@ -1361,28 +1361,15 @@ ul {
   text-transform: none;
 }
 
-/* footer verse — a panel on the footer's own ground, framed in gold */
+/* footer verse — sits beside the seal in the footer's top row, so it is a
+   plain block here rather than a band with its own ground and padding */
 .footer-verse {
-  position: relative;
-  z-index: 1;
   text-align: center;
-  padding-block: clamp(2.75rem, 6vw, 4rem);
-  background: rgba(8, 22, 17, 0.4);
-  border-top: 1px solid rgba(201, 168, 76, 0.24);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.24);
-}
-.footer-verse .arabesque {
-  margin-bottom: 1rem;
-  opacity: 0.4;
-}
-.footer-verse .eyebrow {
-  color: var(--gold);
-  margin-bottom: 1.75rem;
 }
 .footer-verse .arabic-line {
   font-size: clamp(1.4rem, 5.5vw, 2rem);
   color: var(--gold);
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 .footer-verse .verse-en {
   font-family: var(--font-display);
@@ -1390,7 +1377,7 @@ ul {
   font-size: clamp(1rem, 2.4vw, 1.2rem);
   line-height: 1.7;
   color: rgba(246, 242, 234, 0.82);
-  margin: 1.5rem 0 0.75rem;
+  margin: 1rem 0 0.5rem;
 }
 .footer-verse .verse-ref {
   color: var(--gold);
@@ -1430,16 +1417,20 @@ ul {
   gap: clamp(2rem, 4vw, 2.5rem);
   grid-template-columns: repeat(4, minmax(0, 1fr));
   position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 .journey::before {
   content: "";
   position: absolute;
-  top: 34px;
+  top: 28px;
   left: 12%;
   right: 12%;
   height: 1px;
   background: var(--gold);
   opacity: 0.5;
+  z-index: 0;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 1200ms var(--ease);
@@ -1451,21 +1442,30 @@ ul {
   position: relative;
   text-align: center;
 }
-.journey-step .num {
-  display: block;
+.journey-dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-inline: auto;
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--ivory);
+}
+.journey-dot .num {
   font-family: var(--font-display);
-  font-size: 3.25rem;
+  font-size: 1.35rem;
   line-height: 1;
   color: var(--gold);
-  background: var(--ivory);
-  padding-inline: 0.75rem;
-  margin-bottom: 1rem;
 }
-.journey-step h3 {
+.journey-copy h3 {
   color: var(--emerald);
   margin-bottom: 0.6rem;
 }
-.journey-step p {
+.journey-copy p {
   font-size: var(--fs-sm);
   color: #4a5751;
   margin: 0;
@@ -1476,10 +1476,11 @@ ul {
     grid-template-columns: minmax(0, 1fr);
     max-width: 30rem;
     margin-inline: auto;
+    gap: clamp(2.25rem, 7vw, 2.75rem);
   }
   .journey::before {
-    top: 12px;
-    bottom: 12px;
+    top: 24px;
+    bottom: 24px;
     left: calc(50% - 0.5px);
     right: auto;
     width: 1px;
@@ -1489,6 +1490,31 @@ ul {
   }
   .journey.is-visible::before {
     transform: scaleY(1);
+  }
+  .journey-step {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    column-gap: 1rem;
+    align-items: start;
+    text-align: left;
+  }
+  .journey-dot {
+    grid-column: 2;
+    grid-row: 1;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+  }
+  .journey-copy {
+    grid-row: 1;
+  }
+  .journey-step:nth-child(odd) .journey-copy {
+    grid-column: 3;
+    text-align: left;
+  }
+  .journey-step:nth-child(even) .journey-copy {
+    grid-column: 1;
+    text-align: right;
   }
 }
 
@@ -2205,10 +2231,20 @@ ul {
 .site-footer .footer-main.cert-border::after {
   inset: calc(var(--cert-inset, 22px) + 6px);
 }
+/* seal + closing verse, one row. The hairline keeps the framing the old
+   verse band gave without paying for its padding. */
+.footer-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+  padding-bottom: clamp(2.25rem, 4vw, 3rem);
+  margin-bottom: clamp(2.25rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.24);
+}
 .footer-seal {
   display: flex;
   justify-content: center;
-  margin-bottom: 2.5rem;
 }
 .footer-cols {
   display: grid;
@@ -2216,13 +2252,34 @@ ul {
   gap: clamp(2rem, 5vw, 3.5rem);
 }
 @media (max-width: 860px) {
-  .footer-cols {
+  /* the certificate frame sits at 22px (28px inner) but the page gutter is
+     only 20px here, so footer content would otherwise cross the gold rule */
+  .site-footer .container {
+    padding-inline: 2.25rem;
+  }
+  .footer-top {
     grid-template-columns: minmax(0, 1fr);
-    text-align: center;
     justify-items: center;
+    gap: 1.75rem;
+  }
+  /* brand block full width, then Pages and Contact two-up — stacking all
+     three costs ~270px of scroll on a phone. Contact takes the wider share:
+     the email is the longest unbreakable string in the footer. */
+  .footer-cols {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  .footer-cols > :first-child {
+    grid-column: 1 / -1;
   }
   .footer-cols .btn-row {
     justify-content: center;
+  }
+  .footer-cols p,
+  .footer-cols li,
+  .footer-cols a {
+    overflow-wrap: break-word;
   }
 }
 .footer-cols h3 {
@@ -2372,9 +2429,11 @@ ul {
   }
   .rule-draw::before,
   .rule-draw::after,
-  .rule-draw .hairline,
-  .journey::before {
+  .rule-draw .hairline {
     transform: scaleX(1) !important;
+  }
+  .journey::before {
+    transform: scaleX(1) scaleY(1) !important;
   }
   .particles,
   .scroll-cue {

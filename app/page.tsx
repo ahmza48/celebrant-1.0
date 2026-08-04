@@ -224,21 +224,23 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ol className="journey">
+          <ul className="journey">
             {journey.map((item, i) => (
               <li
                 key={item.title}
                 className="journey-step reveal"
                 style={{ transitionDelay: `${i * 120}ms` }}
               >
-                <span className="num" aria-hidden="true">
-                  {item.step}
+                <span className="journey-dot" aria-hidden="true">
+                  <span className="num">{item.step}</span>
                 </span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
+                <div className="journey-copy">
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
