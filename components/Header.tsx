@@ -5,16 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Seal from "./Seal";
 import { PatternLayer } from "./Ornaments";
-import { nav, darkHeroRoutes } from "@/lib/site";
+import { nav } from "@/lib/site";
 
 export default function Header() {
   const pathname = usePathname() || "/";
-  const overDark = darkHeroRoutes.includes(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  // solid after 80px; light-hero pages are solid from the top
+  // transparent over the hero, solid after 80px — every route opens with a hero
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
@@ -40,7 +39,7 @@ export default function Header() {
     };
   }, [open]);
 
-  const isSolid = scrolled || !overDark;
+  const isSolid = scrolled;
 
   return (
     <>
@@ -67,7 +66,7 @@ export default function Header() {
             ))}
           </nav>
 
-          <Link href="/contact" className="btn btn-emerald header-cta">
+          <Link href="/contact" className="btn btn-solid header-cta">
             Book a Ceremony
           </Link>
 

@@ -33,8 +33,8 @@ export default function FaqPage() {
 
       <SectionDivider />
 
-      <section className="section bg-emerald pattern cert-border">
-        <PatternLayer />
+      <section className="section bg-sand pattern cert-border">
+        <PatternLayer onLight />
         <div className="container center">
           <p className="eyebrow reveal">◆ Still Unsure?</p>
           <h2 className="section-heading reveal">Ask Directly</h2>

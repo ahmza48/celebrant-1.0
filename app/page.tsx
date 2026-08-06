@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Photo from "@/components/Photo";
 import Particles from "@/components/Particles";
@@ -224,27 +225,29 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ol className="journey">
+          <ul className="journey">
             {journey.map((item, i) => (
               <li
                 key={item.title}
                 className="journey-step reveal"
                 style={{ transitionDelay: `${i * 120}ms` }}
               >
-                <span className="num" aria-hidden="true">
-                  {item.step}
+                <span className="journey-dot" aria-hidden="true">
+                  <span className="num">{item.step}</span>
                 </span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
+                <div className="journey-copy">
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
       {/* ---------- 6. Gallery preview ---------- */}
-      <section className="section bg-emerald pattern">
-        <PatternLayer />
+      <section className="section bg-sand pattern">
+        <PatternLayer onLight />
         <div className="container">
           <div className="center">
             <p className="eyebrow reveal">◆ Ceremonies Across Sydney</p>
@@ -275,7 +278,12 @@ export default function HomePage() {
               <div
                 key={item.seed}
                 className="reveal arch media ratio-4x5"
-                style={{ transitionDelay: `${(i % 3) * 120}ms` }}
+                style={
+                  {
+                    transitionDelay: `${(i % 3) * 120}ms`,
+                    "--focal": item.focal,
+                  } as CSSProperties
+                }
               >
                 <Photo
                   src={photo(item.term, item.seed, 600, 750)}
@@ -339,8 +347,8 @@ export default function HomePage() {
       </section>
 
       {/* ---------- 8. Begin Your Journey ---------- */}
-      <section className="section bg-emerald pattern cert-border">
-        <PatternLayer />
+      <section className="section bg-sand pattern cert-border">
+        <PatternLayer onLight />
         <div className="container center">
           <div className="cta-portrait corner-ornaments reveal">
             <CornerOrnaments />

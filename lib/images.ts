@@ -33,10 +33,10 @@ const LIBRARY: Record<string, string> = {
   "svc-overseas": "photo-1520854221256-17451cc331bf",
   "svc-noim": "photo-1564287531351-815cc2d36011",
 
-  // gallery
-  "nikah-signing-01": "photo-1549474864-049a3b475a46",
-  "mosque-arch-02": "photo-1551041777-ed277b8dd348",
-  "dua-hands-03": "photo-1505932794465-147d1f1b2c97",
+  // gallery — the client's own ceremony photography leads the set
+  "client-nikah-ceremony": "/assets/ceremony-2.jpg",
+  "client-masjid-certificate": "/assets/ceremony-1.jpg",
+  "client-office-signing": "/assets/ceremony-3.jpg",
   "civil-signing-04": "photo-1627383604317-175d057ea58e",
   "khutbah-05": "photo-1610360164526-1142b11d0d79",
   "mosque-dome-06": "photo-1577561425536-51f550bf91d3",
@@ -59,6 +59,8 @@ const LIBRARY: Record<string, string> = {
 export function photo(term: string, seed: string, w: number, h: number) {
   const id = LIBRARY[seed];
   if (!id) return fallbackPhoto(seed, w, h);
+  // an entry pointing at /public is the client's own photography — serve as is
+  if (id.startsWith("/")) return id;
   return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=70`;
 }
 
