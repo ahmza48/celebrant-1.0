@@ -334,7 +334,7 @@ export default function ContactForm() {
         </p>
       )}
 
-      <button type="submit" className="btn btn-emerald" disabled={sending}>
+      <button type="submit" className="btn btn-solid" disabled={sending}>
         {sending ? "Sending…" : "Send Enquiry"}
       </button>
 

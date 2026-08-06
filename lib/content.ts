@@ -146,6 +146,8 @@ export type GalleryItem = {
   category: GalleryCategory;
   w: number;
   h: number;
+  /** object-position, for photos whose shape fights a fixed-ratio slot. */
+  focal?: string;
 };
 
 export const galleryFilters: { id: GalleryCategory | "all"; label: string }[] = [
@@ -158,9 +160,13 @@ export const galleryFilters: { id: GalleryCategory | "all"; label: string }[] = 
 ];
 
 export const gallery: GalleryItem[] = [
-  { seed: "nikah-signing-01", term: "nikah signing", caption: "Signing the Nikah nama, Punchbowl", category: "signing", w: 1600, h: 700 },
-  { seed: "mosque-arch-02", term: "mosque architecture arch", caption: "Nikah at a Western Sydney masjid", category: "mosque", w: 800, h: 600 },
-  { seed: "dua-hands-03", term: "hands making dua", caption: "Du'a for the couple", category: "family", w: 800, h: 1100 },
+  /* [CONFIRM WITH CLIENT] captions — the client's own photographs. Wording
+     describes only what is visible; confirm names, venues and suburbs. */
+  { seed: "client-nikah-ceremony", term: "nikah ceremony", caption: "Conducting a Nikah, the groom and the wali either side", category: "nikah", w: 1179, h: 557 },
+  { seed: "client-masjid-certificate", term: "masjid marriage certificate", caption: "Outside the masjid with the marriage certificate", category: "mosque", w: 1168, h: 1600 },
+  /* landscape in a 4:5 homepage tile — a centred crop cuts the bride off the
+     right edge, so bias the focal point to keep all three in frame */
+  { seed: "client-office-signing", term: "marriage paperwork", caption: "Completing the marriage paperwork with a couple", category: "signing", w: 1014, h: 865, focal: "59% center" },
   { seed: "civil-signing-04", term: "wedding signing certificate", caption: "The legal certificates, Bankstown", category: "signing", w: 800, h: 620 },
   { seed: "khutbah-05", term: "islamic ceremony gathering", caption: "The khutbah before the Ijab and Qubool", category: "nikah", w: 800, h: 1000 },
   { seed: "mosque-dome-06", term: "mosque dome interior", caption: "Light through the dome, Lakemba", category: "mosque", w: 800, h: 640 },

@@ -76,8 +76,8 @@ export default function TestimonialsPage() {
       <SectionDivider />
 
       {/* ---------- Google review CTA ---------- */}
-      <section className="section bg-emerald pattern cert-border">
-        <PatternLayer />
+      <section className="section bg-cream pattern cert-border">
+        <PatternLayer onLight />
         <div className="container center">
           <p className="eyebrow reveal">◆ Already Married by Us?</p>
           <h2 className="section-heading reveal">

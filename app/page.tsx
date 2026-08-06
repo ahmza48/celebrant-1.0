@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Photo from "@/components/Photo";
 import Particles from "@/components/Particles";
@@ -245,8 +246,8 @@ export default function HomePage() {
       </section>
 
       {/* ---------- 6. Gallery preview ---------- */}
-      <section className="section bg-emerald pattern">
-        <PatternLayer />
+      <section className="section bg-sand pattern">
+        <PatternLayer onLight />
         <div className="container">
           <div className="center">
             <p className="eyebrow reveal">◆ Ceremonies Across Sydney</p>
@@ -277,7 +278,12 @@ export default function HomePage() {
               <div
                 key={item.seed}
                 className="reveal arch media ratio-4x5"
-                style={{ transitionDelay: `${(i % 3) * 120}ms` }}
+                style={
+                  {
+                    transitionDelay: `${(i % 3) * 120}ms`,
+                    "--focal": item.focal,
+                  } as CSSProperties
+                }
               >
                 <Photo
                   src={photo(item.term, item.seed, 600, 750)}
@@ -341,8 +347,8 @@ export default function HomePage() {
       </section>
 
       {/* ---------- 8. Begin Your Journey ---------- */}
-      <section className="section bg-emerald pattern cert-border">
-        <PatternLayer />
+      <section className="section bg-sand pattern cert-border">
+        <PatternLayer onLight />
         <div className="container center">
           <div className="cta-portrait corner-ornaments reveal">
             <CornerOrnaments />

@@ -18,6 +18,21 @@ export const site = {
   url: "https://qazimarriagecelebrant.com.au",
 } as const;
 
+export const social = [
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@mohammad19661966?_r=1&_t=ZS-98c1iwmuir2",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/hanieheh?igsh=MWRoZjE4Znk3OTBmbg==",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/18rHr2NeBB/?mibextid=wwXIfr",
+  },
+] as const;
+
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
@@ -28,5 +43,7 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-/** Routes whose hero is dark, so the fixed header can start transparent. */
-export const darkHeroRoutes = ["/", "/services", "/gallery", "/faq"];
+/** Routes whose hero is dark, so the fixed header can start transparent.
+ *  Every hero is light since the white/gold retheme, so the header is solid
+ *  from the top everywhere. */
+export const darkHeroRoutes: string[] = [];

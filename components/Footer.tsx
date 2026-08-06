@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Seal from "./Seal";
+import SocialLinks from "./SocialLinks";
 import { PatternLayer, GoldRule } from "./Ornaments";
 import { nav, site } from "@/lib/site";
 
@@ -56,6 +57,8 @@ export default function Footer() {
                   Call Now
                 </a>
               </div>
+
+              <SocialLinks />
             </div>
 
             <nav aria-label="Footer">

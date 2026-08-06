@@ -11,11 +11,17 @@
   --cream: #f2ede3;
   --sand: #e8dfd0;
   --charcoal: #1a1a1a;
-  --emerald: #1b3a30;
-  --olive: #2d4a3e;
+  /* the one dark ground left on the site — footer, mobile menu, solid buttons */
+  --espresso: #3b2c12;
+  --espresso-hi: #4d3a1a;
+  /* warm near-charcoal for headings on light grounds */
+  --heading: #2f2a22;
   --gold: #c9a84c;
   --bronze: #a07840;
-  --muted: #7a8c84;
+  /* gold dark enough to carry small text on the light grounds — --gold is
+     ~2.9:1 on ivory and stays on rules, seals and 24px+ display type */
+  --gold-ink: #7d5a24;
+  --muted: #857c6e;
   --line: #ddd8ce;
 
   /* text on dark grounds */
@@ -161,7 +167,7 @@ ul {
 
 ::selection {
   background: var(--gold);
-  color: var(--emerald);
+  color: var(--heading);
 }
 
 .skip-link {
@@ -170,7 +176,7 @@ ul {
   top: 0;
   transform: translate(-50%, -120%);
   z-index: 200;
-  background: var(--emerald);
+  background: var(--espresso);
   color: var(--on-dark);
   padding: 0.75rem 1.5rem;
   font-size: var(--fs-sm);
@@ -223,16 +229,6 @@ ul {
 .bg-sand {
   background: var(--sand);
 }
-.bg-emerald {
-  background: var(--emerald);
-  color: var(--on-dark);
-}
-.bg-emerald h1,
-.bg-emerald h2,
-.bg-emerald h3 {
-  color: var(--on-dark);
-}
-
 .prose {
   max-width: var(--prose);
   margin-inline: auto;
@@ -259,18 +255,9 @@ ul {
   line-height: 1.6;
 }
 
-.bg-emerald .eyebrow,
-.hero .eyebrow {
-  color: var(--gold);
-}
-
 .lead {
   font-size: clamp(1rem, 2.2vw, 1.125rem);
   color: #3a3a3a;
-}
-
-.bg-emerald .lead {
-  color: var(--on-dark-soft);
 }
 
 .section-heading {
@@ -287,7 +274,7 @@ ul {
   font-style: italic;
   font-size: clamp(1.25rem, 3vw, 1.6rem);
   line-height: 1.55;
-  color: var(--emerald);
+  color: var(--heading);
   margin: 0;
 }
 
@@ -325,20 +312,27 @@ ul {
   pointer-events: none;
   border: 1px solid rgba(201, 168, 76, 0.55);
 }
+/* --cert-inset-top defaults to --cert-inset, so only elements that opt in
+   (the heroes, which sit behind the fixed header) get a deeper top edge */
 .cert-border::before {
-  inset: var(--cert-inset, 40px);
+  inset: var(--cert-inset-top, var(--cert-inset, 40px)) var(--cert-inset, 40px)
+    var(--cert-inset, 40px);
 }
 .cert-border::after {
-  inset: calc(var(--cert-inset, 40px) + 6px);
+  inset: calc(var(--cert-inset-top, var(--cert-inset, 40px)) + 6px)
+    calc(var(--cert-inset, 40px) + 6px) calc(var(--cert-inset, 40px) + 6px);
   border-color: rgba(201, 168, 76, 0.28);
 }
 
 @media (max-width: 768px) {
   .cert-border::before {
-    inset: var(--cert-inset-sm, 16px);
+    inset: var(--cert-inset-top, var(--cert-inset-sm, 16px))
+      var(--cert-inset-sm, 16px) var(--cert-inset-sm, 16px);
   }
   .cert-border::after {
-    inset: calc(var(--cert-inset-sm, 16px) + 5px);
+    inset: calc(var(--cert-inset-top, var(--cert-inset-sm, 16px)) + 5px)
+      calc(var(--cert-inset-sm, 16px) + 5px)
+      calc(var(--cert-inset-sm, 16px) + 5px);
   }
 }
 
@@ -552,25 +546,31 @@ ul {
   background: #241d09;
 }
 
-.btn-emerald {
-  --btn-bg: var(--emerald);
+.btn-solid {
+  --btn-bg: var(--espresso);
   --btn-fg: var(--on-dark);
   --btn-bd: var(--gold);
 }
-.btn-emerald:hover {
-  --btn-bg: var(--olive);
+.btn-solid:hover {
+  --btn-bg: var(--espresso-hi);
 }
 
 .btn-outline {
-  --btn-fg: var(--gold);
-  --btn-bd: var(--gold);
+  --btn-fg: var(--gold-ink);
+  --btn-bd: var(--bronze);
 }
 .btn-outline:hover {
   --btn-bg: rgba(201, 168, 76, 0.14);
 }
+/* on the footer's dark ground plain gold reads better and passes */
+.site-footer .btn-outline,
+.nav-overlay .btn-outline {
+  --btn-fg: var(--gold);
+  --btn-bd: var(--gold);
+}
 
 .btn-outline-dark {
-  --btn-fg: var(--emerald);
+  --btn-fg: var(--heading);
   --btn-bd: var(--bronze);
 }
 .btn-outline-dark:hover {
@@ -578,7 +578,7 @@ ul {
 }
 
 .btn-quiet {
-  --btn-fg: var(--on-dark);
+  --btn-fg: var(--charcoal);
   padding-inline: 0.5rem;
 }
 .btn-quiet::after {
@@ -606,9 +606,9 @@ ul {
   font-size: var(--fs-sm);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-ink);
   padding-block: 0.4rem;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.45);
+  border-bottom: 1px solid var(--bronze);
   transition: border-color 250ms var(--ease), gap 250ms var(--ease);
 }
 .link-more:hover {
@@ -651,7 +651,7 @@ ul {
   font-size: 1.05rem;
   letter-spacing: 0.06em;
   line-height: 1.2;
-  color: var(--on-dark);
+  color: var(--heading);
   white-space: nowrap;
 }
 .brand-name span {
@@ -672,7 +672,7 @@ ul {
   position: relative;
   font-size: var(--fs-sm);
   letter-spacing: 0.05em;
-  color: var(--on-dark);
+  color: var(--charcoal);
   padding-block: 0.35rem;
   white-space: nowrap;
   transition: color 250ms var(--ease);
@@ -694,7 +694,7 @@ ul {
   transform: scaleX(1);
 }
 .nav-desktop a.active {
-  color: var(--gold);
+  color: var(--bronze);
 }
 
 .header-cta.btn {
@@ -703,8 +703,8 @@ ul {
   font-size: var(--fs-xs);
   letter-spacing: 0.14em;
   background: transparent;
-  border-color: rgba(201, 168, 76, 0.7);
-  color: var(--gold);
+  border-color: var(--bronze);
+  color: var(--gold-ink);
   flex-shrink: 0;
 }
 .header-cta.btn::after {
@@ -717,12 +717,12 @@ ul {
   border-color: var(--gold);
 }
 .site-header.is-solid .header-cta.btn {
-  background: var(--emerald);
-  border-color: var(--emerald);
+  background: var(--espresso);
+  border-color: var(--espresso);
   color: var(--on-dark);
 }
 .site-header.is-solid .header-cta.btn:hover {
-  background: var(--olive);
+  background: var(--espresso-hi);
   border-color: var(--gold);
 }
 
@@ -740,7 +740,7 @@ ul {
   color: var(--bronze);
 }
 .site-header.is-solid .burger {
-  color: var(--emerald);
+  color: var(--heading);
 }
 
 .burger {
@@ -751,7 +751,7 @@ ul {
   height: 44px;
   background: none;
   border: 0;
-  color: var(--on-dark);
+  color: var(--heading);
   cursor: pointer;
   padding: 0;
 }
@@ -793,7 +793,7 @@ ul {
   position: fixed;
   inset: 0;
   z-index: 150;
-  background: var(--emerald);
+  background: var(--espresso);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -844,10 +844,17 @@ ul {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--emerald);
-  color: var(--on-dark);
+  background: var(--cream);
+  color: var(--charcoal);
   text-align: center;
   padding: calc(var(--header-h) + 3.5rem) var(--gutter) 3.5rem;
+  /* the hero sits behind the fixed header, so its frame has to start below it */
+  --cert-inset-top: calc(var(--header-h) + 1rem);
+}
+/* above the scrim and pattern texture, below the headline */
+.hero.cert-border::before,
+.hero.cert-border::after {
+  z-index: 3;
 }
 
 .hero-home {
@@ -868,15 +875,16 @@ ul {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(27, 58, 48, 0.65);
+  /* ivory wash — the photo reads as texture behind charcoal text */
+  background: rgba(250, 248, 243, 0.82);
 }
 .hero-texture {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background-color: #fff;
-  opacity: 0.06;
+  background-color: var(--bronze);
+  opacity: 0.05;
   -webkit-mask-image: var(--pattern);
   mask-image: var(--pattern);
   -webkit-mask-size: 88px 88px;
@@ -889,7 +897,7 @@ ul {
 }
 
 .hero h1 {
-  color: var(--on-dark);
+  color: var(--heading);
   font-size: clamp(2.6rem, 8.5vw, 5rem);
   letter-spacing: 0.02em;
 }
@@ -897,14 +905,14 @@ ul {
   display: block;
   font-style: italic;
   font-size: 0.78em;
-  color: var(--gold);
+  color: var(--bronze);
   margin-top: 0.15em;
 }
 .hero .hero-sub {
   max-width: 42rem;
   margin-inline: auto;
   font-size: clamp(0.95rem, 2.4vw, 1.1rem);
-  color: var(--on-dark-soft);
+  color: #3a3a3a;
 }
 
 .hero-trust {
@@ -914,13 +922,12 @@ ul {
   gap: 0.5rem 1.5rem;
   font-size: var(--fs-xs);
   letter-spacing: 0.06em;
-  color: var(--on-dark);
-  opacity: 0.8;
+  color: #3a3a3a;
   margin: 0;
 }
 .hero-trust li::before {
   content: "\2713";
-  color: var(--gold);
+  color: var(--bronze);
   margin-right: 0.4rem;
 }
 
@@ -931,7 +938,7 @@ ul {
   z-index: 4;
   width: 1px;
   height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--gold));
+  background: linear-gradient(to bottom, transparent, var(--bronze));
   transform: translateX(-50%);
   animation: cue 2.4s var(--ease) infinite;
 }
@@ -966,7 +973,7 @@ ul {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--bronze);
   opacity: 0;
   animation-name: drift;
   animation-timing-function: linear;
@@ -978,10 +985,10 @@ ul {
     transform: translateY(0);
   }
   12% {
-    opacity: 0.4;
+    opacity: 0.55;
   }
   85% {
-    opacity: 0.4;
+    opacity: 0.55;
   }
   100% {
     opacity: 0;
@@ -999,7 +1006,7 @@ ul {
   color: var(--charcoal);
 }
 .page-hero.is-light h1 {
-  color: var(--emerald);
+  color: var(--heading);
 }
 .page-hero.is-light .eyebrow {
   color: var(--bronze);
@@ -1012,10 +1019,7 @@ ul {
   font-size: var(--fs-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--on-dark-soft);
-}
-.page-hero.is-light .breadcrumb {
-  color: var(--muted);
+  color: #5a544a;
 }
 .breadcrumb a:hover {
   color: var(--gold);
@@ -1122,6 +1126,8 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* --focal keeps the subject in frame when a photo's shape fights its slot */
+  object-position: var(--focal, center);
   display: block;
 }
 .ratio-4x5 {
@@ -1171,7 +1177,7 @@ ul {
   background: radial-gradient(
     ellipse at center,
     transparent 45%,
-    rgba(27, 58, 48, 0.22) 100%
+    rgba(59, 44, 18, 0.22) 100%
   );
 }
 
@@ -1248,7 +1254,7 @@ ul {
 
 /* nikah inclusion cards */
 .faith-card h3 {
-  color: var(--emerald);
+  color: var(--heading);
   margin-bottom: 0.5rem;
 }
 .faith-card p {
@@ -1342,7 +1348,7 @@ ul {
   font-style: italic;
   font-size: clamp(1.05rem, 2.6vw, 1.3rem);
   line-height: 1.7;
-  color: #5f6d66;
+  color: #6b6257;
   margin: 1.75rem 0 1.25rem;
 }
 .verse-ref {
@@ -1462,12 +1468,12 @@ ul {
   color: var(--gold);
 }
 .journey-copy h3 {
-  color: var(--emerald);
+  color: var(--heading);
   margin-bottom: 0.6rem;
 }
 .journey-copy p {
   font-size: var(--fs-sm);
-  color: #4a5751;
+  color: #4f4840;
   margin: 0;
 }
 
@@ -1565,7 +1571,7 @@ ul {
   color: var(--charcoal);
 }
 .filter-btn[aria-pressed="true"] {
-  color: var(--emerald);
+  color: var(--heading);
 }
 .filter-btn[aria-pressed="true"]::after {
   transform: scaleX(1);
@@ -1631,7 +1637,7 @@ ul {
   justify-content: flex-end;
   gap: 0.6rem;
   padding: 1.5rem 1rem;
-  background: rgba(27, 58, 48, 0.78);
+  background: rgba(59, 44, 18, 0.78);
   color: var(--on-dark);
   opacity: 0;
   transition: opacity 400ms var(--ease);
@@ -1756,7 +1762,7 @@ ul {
   font-style: italic;
   font-size: clamp(1.3rem, 3.4vw, 1.9rem);
   line-height: 1.5;
-  color: var(--emerald);
+  color: var(--heading);
   max-width: 34rem;
   margin-inline: auto;
 }
@@ -1821,7 +1827,7 @@ ul {
 }
 
 .service h2 {
-  color: var(--emerald);
+  color: var(--heading);
   margin-bottom: 1.25rem;
 }
 .service .service-body p {
@@ -1847,10 +1853,6 @@ ul {
   font-size: 0.6rem;
   color: var(--gold);
 }
-.bg-emerald .gold-list li {
-  color: var(--on-dark-soft);
-}
-
 .note-verse {
   margin-top: 1.75rem;
   padding: 1.25rem 1.5rem;
@@ -1862,7 +1864,7 @@ ul {
   font-style: italic;
   font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--emerald);
+  color: var(--heading);
   margin: 0 0 0.5rem;
 }
 .note-verse .verse-ref {
@@ -1876,7 +1878,7 @@ ul {
   gap: 1.25rem;
 }
 .price-card.is-featured {
-  --surface-bg: var(--emerald);
+  --surface-bg: var(--espresso);
   color: var(--on-dark);
 }
 .price-card.is-featured h3,
@@ -1884,7 +1886,7 @@ ul {
   color: var(--on-dark);
 }
 .price-card h3 {
-  color: var(--emerald);
+  color: var(--heading);
 }
 .price-card .price {
   font-family: var(--font-display);
@@ -1957,7 +1959,7 @@ ul {
   border-radius: 999px;
   font-size: var(--fs-xs);
   letter-spacing: 0.08em;
-  color: var(--emerald);
+  color: var(--heading);
   background: rgba(201, 168, 76, 0.07);
 }
 
@@ -1975,13 +1977,13 @@ ul {
   }
 }
 .values h3 {
-  color: var(--emerald);
+  color: var(--heading);
   font-style: italic;
   margin-bottom: 0.75rem;
 }
 .values p {
   font-size: var(--fs-sm);
-  color: #4a5751;
+  color: #4f4840;
   margin: 0;
 }
 
@@ -1993,10 +1995,10 @@ ul {
 }
 .pill {
   padding: 0.5rem 1rem;
-  border: 1px solid rgba(201, 168, 76, 0.55);
+  border: 1px solid var(--bronze);
   border-radius: 999px;
   font-size: var(--fs-sm);
-  color: var(--on-dark);
+  color: var(--heading);
 }
 
 /* ---------- 17. FAQ ---------- */
@@ -2005,7 +2007,7 @@ ul {
   margin-top: clamp(3rem, 6vw, 4.5rem);
 }
 .faq-group > h2 {
-  color: var(--emerald);
+  color: var(--heading);
   margin-bottom: 1.5rem;
 }
 
@@ -2030,7 +2032,7 @@ ul {
   transition: color 250ms var(--ease);
 }
 .faq-q:hover {
-  color: var(--emerald);
+  color: var(--heading);
 }
 .faq-q .chev {
   flex-shrink: 0;
@@ -2164,7 +2166,7 @@ ul {
   text-align: center;
 }
 .form-done h2 {
-  color: var(--emerald);
+  color: var(--heading);
   margin-bottom: 0.75rem;
 }
 
@@ -2213,7 +2215,7 @@ ul {
 
 .site-footer {
   position: relative;
-  background: var(--emerald);
+  background: var(--espresso);
   color: var(--on-dark);
   --cert-inset: 22px;
   --cert-inset-sm: 12px;
@@ -2298,6 +2300,47 @@ ul {
   color: var(--on-dark-soft);
   line-height: 1.9;
 }
+/* buttons keep their own ink — this selector otherwise beats .btn */
+.footer-cols .btn {
+  color: var(--btn-fg);
+}
+
+/* social marks — circular, echoing the seal */
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+/* .site-footer prefix so these outrank the generic .footer-cols a rules */
+.site-footer .social-row a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: color 250ms var(--ease), border-color 250ms var(--ease),
+    background-color 250ms var(--ease);
+}
+.site-footer .social-row a:hover {
+  color: var(--espresso);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.social-row svg {
+  width: 19px;
+  height: 19px;
+}
+@media (max-width: 860px) {
+  .social-row {
+    justify-content: center;
+  }
+}
 .footer-cols a:hover {
   color: var(--gold);
 }
@@ -2356,7 +2399,7 @@ ul {
   color: #241d09;
 }
 .action-bar .ab-call {
-  background: var(--emerald);
+  background: var(--espresso);
   color: var(--on-dark);
   border-left: 1px solid rgba(201, 168, 76, 0.5);
 }

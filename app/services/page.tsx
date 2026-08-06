@@ -140,8 +140,8 @@ export default function ServicesPage() {
       </section>
 
       {/* ---------- Closing CTA ---------- */}
-      <section className="section bg-emerald pattern cert-border">
-        <PatternLayer />
+      <section className="section bg-sand pattern cert-border">
+        <PatternLayer onLight />
         <div className="container center">
           <p className="eyebrow reveal">◆ Not Sure Which One?</p>
           <h2 className="section-heading reveal">Tell Us Your Date</h2>
