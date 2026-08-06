@@ -1,7 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
+
+/**
+ * Bring an element into view below the fixed header. The header overlays the
+ * top of the page, so scrollIntoView alone would tuck the target underneath it.
+ */
+function scrollIntoViewBelowHeader(el: HTMLElement | null) {
+  if (!el) return;
+  const headerHeight =
+    parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue("--header-h"),
+      10,
+    ) || 84;
+  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth",
+  });
+}
 
 /** Server route that emails the enquiry to the celebrant. */
 const FORM_ENDPOINT = "/api/contact";
@@ -86,6 +106,23 @@ export default function ContactForm() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState<string | null>(null);
+  const doneRef = useRef<HTMLDivElement>(null);
+  const errorRef = useRef<HTMLDivElement>(null);
+
+  // The form is replaced by the thank-you panel, so focus would otherwise fall
+  // back to the body. Move it there and bring it into view.
+  useEffect(() => {
+    if (!sent) return;
+    doneRef.current?.focus({ preventScroll: true });
+    scrollIntoViewBelowHeader(doneRef.current);
+  }, [sent]);
+
+  // The message sits above the button, which may be off screen after a long
+  // form. role="alert" announces it; this makes it visible too.
+  useEffect(() => {
+    if (!failed) return;
+    scrollIntoViewBelowHeader(errorRef.current);
+  }, [failed]);
 
   const set = (key: keyof Values) => (
     event: React.ChangeEvent<
@@ -143,7 +180,7 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className="form-done" role="status">
+      <div className="form-done" role="status" tabIndex={-1} ref={doneRef}>
         <p className="eyebrow">◆ Thank You</p>
         <h2>Your enquiry is on its way</h2>
         <p>
@@ -319,7 +356,7 @@ export default function ContactForm() {
       />
 
       {failed && (
-        <div role="alert" style={{ marginBottom: "1.25rem" }}>
+        <div role="alert" ref={errorRef} style={{ marginBottom: "1.25rem" }}>
           <p className="field-error" style={{ marginBottom: "0.5rem" }}>
             {failed}
           </p>

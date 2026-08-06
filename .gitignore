@@ -1,5 +1,12 @@
 node_modules
 .next
+
+# This project uses npm. A foreign lockfile makes Vercel switch package
+# manager, and running pnpm/yarn over an npm node_modules leaves a hybrid
+# tree that breaks hydration at runtime.
+pnpm-lock.yaml
+yarn.lock
+bun.lockb
 out
 build
 .DS_Store
