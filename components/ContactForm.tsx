@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { site } from "@/lib/site";
 
-/** Set this to a form service endpoint (Formspree, Basin, etc.). */
-const FORM_ENDPOINT = "";
+/** Server route that emails the enquiry to the celebrant. */
+const FORM_ENDPOINT = "/api/contact";
 
 const ceremonyTypes = [
   "Islamic Nikah",
@@ -85,7 +85,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = useState<string | null>(null);
 
   const set = (key: keyof Values) => (
     event: React.ChangeEvent<
@@ -96,26 +96,10 @@ export default function ContactForm() {
     setErrors((prev) => ({ ...prev, [key]: undefined }));
   };
 
-  const mailtoFallback = () => {
-    const body = [
-      `Name: ${values.name}`,
-      `Phone: ${values.phone}`,
-      `Email: ${values.email}`,
-      `Ceremony type: ${values.ceremony}`,
-      `Preferred date: ${values.date || "Not decided"}`,
-      `Location: ${values.location || "Not decided"}`,
-      `Heard about us via: ${values.source || "Not stated"}`,
-      "",
-      values.message,
-    ].join("\n");
-
-    window.location.href = `${site.emailHref}?subject=${encodeURIComponent(
-      `Ceremony enquiry — ${values.name}`,
-    )}&body=${encodeURIComponent(body)}`;
-  };
-
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (sending) return;
+
     const found = validate(values);
     setErrors(found);
 
@@ -127,24 +111,31 @@ export default function ContactForm() {
       return;
     }
 
-    if (!FORM_ENDPOINT) {
-      mailtoFallback();
-      setSent(true);
-      return;
-    }
-
     setSending(true);
-    setFailed(false);
+    setFailed(null);
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      if (!response.ok) throw new Error(String(response.status));
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setFailed(
+          typeof result.error === "string"
+            ? result.error
+            : "We could not send your enquiry. Please try again.",
+        );
+        return;
+      }
+
       setSent(true);
     } catch {
-      setFailed(true);
+      setFailed(
+        "We could not reach the server. Please check your connection and try again.",
+      );
     } finally {
       setSending(false);
     }
@@ -328,13 +319,26 @@ export default function ContactForm() {
       />
 
       {failed && (
-        <p className="field-error" role="alert" style={{ marginBottom: "1rem" }}>
-          Something went wrong sending your enquiry. Please try again, or message
-          us on WhatsApp.
-        </p>
+        <div role="alert" style={{ marginBottom: "1.25rem" }}>
+          <p className="field-error" style={{ marginBottom: "0.5rem" }}>
+            {failed}
+          </p>
+          <p className="form-note" style={{ margin: 0 }}>
+            You can also reach us on{" "}
+            <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>{" "}
+            or at <a href={site.emailHref}>{site.email}</a>.
+          </p>
+        </div>
       )}
 
-      <button type="submit" className="btn btn-solid" disabled={sending}>
+      <button
+        type="submit"
+        className="btn btn-solid"
+        disabled={sending}
+        aria-busy={sending}
+      >
         {sending ? "Sending…" : "Send Enquiry"}
       </button>
 
