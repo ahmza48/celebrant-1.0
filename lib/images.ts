@@ -35,7 +35,7 @@ const LIBRARY: Record<string, string> = {
 
   // gallery — the client's own ceremony photography leads the set
   "client-nikah-ceremony": "/assets/ceremony-2.jpg",
-  "client-masjid-certificate": "/assets/ceremony-1.jpg",
+  "client-mosque-certificate": "/assets/ceremony-1.jpg",
   "client-office-signing": "/assets/ceremony-3.jpg",
   "civil-signing-04": "photo-1627383604317-175d057ea58e",
   "khutbah-05": "photo-1610360164526-1142b11d0d79",

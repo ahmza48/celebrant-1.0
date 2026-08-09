@@ -312,7 +312,7 @@ export default function ContactForm() {
             type="text"
             value={values.location}
             onChange={set("location")}
-            placeholder="Suburb, home, masjid, hall"
+            placeholder="Suburb, home, mosque, hall"
           />
         }
       />

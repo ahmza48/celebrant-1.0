@@ -45,7 +45,7 @@ A Nikah is not a transaction. It is one of the most spiritually significant even
 **The emotional register of every page:** sacred · warm · elegant · trustworthy · timeless
 
 **The visual world this site belongs to:**
-- A luxury Nikah nama — hand-ruled gold borders, fine calligraphy, ivory paper
+- A luxury Nikah certificate — hand-ruled gold borders, fine calligraphy, ivory paper
 - The interior of a grand mosque — geometric light, arched thresholds, warm stone
 - A premium Arabic wedding invitation — gold foil on cream, elegant serif, nothing wasted
 - An illuminated Quran cover — reverent, beautiful, built to last
@@ -133,7 +133,7 @@ A circular emblem in gold line art:
 - This is the most important brand element — it must be an SVG, drawn as a stroke animation on page load
 
 ### 5.5 Nikah Certificate Border
-A fine double-rule border in gold inset from the edges — referencing the formal ruled borders of a Nikah nama or marriage certificate. Used on: hero section (inset 40px from viewport edges), and key content panels.
+A fine double-rule border in gold inset from the edges — referencing the formal ruled borders of a Nikah certificate or marriage certificate. Used on: hero section (inset 40px from viewport edges), and key content panels.
 
 ### 5.6 Arabesque Corner Ornaments
 Very subtle SVG floral arabesque marks at section transitions and in the footer. Think the corner ornaments of a hand-illuminated manuscript page. Small, quiet, never dominant.

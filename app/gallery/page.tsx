@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Ceremonies Across Sydney",
   description:
-    "Nikah ceremonies conducted across Sydney and greater NSW — in homes, masjids, halls and gardens, with the legal signing handled on the day.",
+    "Nikah ceremonies conducted across Sydney and greater NSW — in homes, mosques, halls and gardens, with the legal signing handled on the day.",
   alternates: { canonical: "/gallery" },
 };
 
@@ -20,7 +20,7 @@ export default function GalleryPage() {
       <PageHero
         eyebrow="◆ Ceremonies Across Sydney"
         title="Ceremonies Across Sydney"
-        sub="Homes, masjids, halls and gardens — every Nikah prepared for the family in front of us."
+        sub="Homes, mosques, halls and gardens — every Nikah prepared for the family in front of us."
         crumb="Gallery"
         imageTerm="islamic wedding"
         imageSeed="gallery-hero"

@@ -26,8 +26,8 @@ export const services: Service[] = [
       "Ijab and Qubool, with consent sought clearly from both parties",
       "Mahr agreed, stated and recorded in the contract",
       "Guidance on wali and witness requirements",
-      "Nikah nama prepared and signed",
-      "Ceremony conducted at your home, venue or masjid",
+      "Nikah certificate prepared and signed",
+      "Ceremony conducted at your home, venue or mosque",
     ],
     verse: {
       text: "“Marry those among you who are single, and the righteous among your male and female servants.”",
@@ -43,7 +43,7 @@ export const services: Service[] = [
     paragraphs: [
       "This is what most families choose, and it is the reason this practice exists. The Nikah and the legal Australian marriage happen in the same gathering, conducted by the same person, in front of the same guests. There is no second appointment at a registry office and no separate celebrant to book. Your guests see one ceremony. What they do not see is the small legal section woven into it, which takes only a few minutes.",
       "The paperwork runs on a fixed timetable, so start early. A Notice of Intended Marriage must be lodged with your celebrant at least one month and one day before the ceremony date, and it stays valid for up to eighteen months. You will need original identity documents — a birth certificate or passport for each of you — and if either of you has been married before, the divorce order or the death certificate. The forms are completed together at the consultation so nothing is missed.",
-      "On the day, the legal wording required by the Marriage Act is read, and you sign three certificates with your two witnesses. Your marriage is then registered with Births, Deaths and Marriages NSW, and you can order your official marriage certificate from them afterwards. That certificate is what banks, Centrelink, Home Affairs and overseas embassies will ask to see. Your Nikah nama sits alongside it, honoured but separate.",
+      "On the day, the legal wording required by the Marriage Act is read, and you sign three certificates with your two witnesses. Your marriage is then registered with Births, Deaths and Marriages NSW, and you can order your official marriage certificate from them afterwards. That certificate is what banks, Centrelink, Home Affairs and overseas embassies will ask to see. Your Nikah certificate sits alongside it, honoured but separate.",
     ],
     includes: [
       "Full Nikah and the legal ceremony in one gathering",
@@ -77,13 +77,13 @@ export const services: Service[] = [
   {
     id: "mahr-contract",
     eyebrow: "◆ Service Four",
-    title: "Mahr, the Nikah Nama & the Contract",
+    title: "Mahr, the Nikah Certificate & the Contract",
     seed: "svc-mahr",
     term: "islamic calligraphy gold",
     paragraphs: [
-      "The Mahr is a right of the bride, not a formality and not a gift from her family. It is agreed between the two parties, stated openly in front of the witnesses, and written into the Nikah nama. Problems arise when it is discussed vaguely, promised verbally, or left to be settled later. Sitting down before the day and putting the amount, the form and the timing in writing takes twenty minutes and prevents years of difficulty.",
+      "The Mahr is a right of the bride, not a formality and not a gift from her family. It is agreed between the two parties, stated openly in front of the witnesses, and written into the Nikah certificate. Problems arise when it is discussed vaguely, promised verbally, or left to be settled later. Sitting down before the day and putting the amount, the form and the timing in writing takes twenty minutes and prevents years of difficulty.",
       "Mahr can be prompt, deferred, or partly each. It can be money, gold, property or something else agreed between the two of you. The celebrant will explain the difference between muajjal and muwajjal in plain language, so both families understand what has actually been agreed and when it becomes due. Where the families are negotiating, the role here is to make sure the bride's own view is heard and recorded, because it is her right.",
-      "Conditions can also be written into the Nikah contract, where both parties agree to them and they do not contradict the marriage itself. Couples commonly include matters like where they will live, or continuing study or work. These are discussed at the consultation, drafted clearly, and read aloud before signing so that nobody signs something they have not understood. Your Nikah nama is prepared properly and given to you on the day.",
+      "Conditions can also be written into the Nikah contract, where both parties agree to them and they do not contradict the marriage itself. Couples commonly include matters like where they will live, or continuing study or work. These are discussed at the consultation, drafted clearly, and read aloud before signing so that nobody signs something they have not understood. Your Nikah certificate is prepared properly and given to you on the day.",
     ],
     includes: [
       "Mahr agreed, stated before witnesses and written down",
@@ -91,7 +91,7 @@ export const services: Service[] = [
       "The bride's own view sought and recorded",
       "Conditions drafted into the contract where both parties agree",
       "Everything read aloud before anyone signs",
-      "Nikah nama prepared and handed to you on the day",
+      "Nikah certificate prepared and handed to you on the day",
     ],
   },
   {
@@ -164,7 +164,7 @@ export const pricing = [
     features: [
       "Khutbah, Ijab and Qubool",
       "Mahr agreed and recorded in the contract",
-      "Nikah nama prepared and signed",
+      "Nikah certificate prepared and signed",
       "Consultation before the day",
       "Sydney metropolitan area",
     ],

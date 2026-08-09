@@ -57,7 +57,7 @@ export const faqGroups: FaqGroup[] = [
       {
         q: "Where can the ceremony take place?",
         a: [
-          "At your home, a reception venue, a masjid, a hall, a garden or a park — anywhere across Sydney and greater New South Wales.",
+          "At your home, a reception venue, a mosque, a hall, a garden or a park — anywhere across Sydney and greater New South Wales.",
           "If the location has its own rules or a booking process, let us know early and we will work to them.",
         ],
       },
@@ -89,7 +89,7 @@ export const faqGroups: FaqGroup[] = [
       {
         q: "What is the Mahr, and when should we agree it?",
         a: [
-          "The Mahr is a right of the bride, given by the groom. It is agreed between the two parties, stated openly in front of the witnesses, and written into the Nikah nama.",
+          "The Mahr is a right of the bride, given by the groom. It is agreed between the two parties, stated openly in front of the witnesses, and written into the Nikah certificate.",
           "Agree it before the day, not on it. Mahr can be prompt, deferred, or partly each, and it can be money, gold or something else you both agree on. Vague verbal promises cause difficulty years later.",
         ],
       },
@@ -101,10 +101,10 @@ export const faqGroups: FaqGroup[] = [
         ],
       },
       {
-        q: "Can the Nikah take place at home rather than at a masjid?",
+        q: "Can the Nikah take place at home rather than at a mosque?",
         a: [
           "Yes. A Nikah is valid wherever it is conducted, provided the conditions are met and the witnesses are present.",
-          "Homes, halls, gardens and masjids across Sydney are all common. Many families prefer the lounge room with twenty people to a large hall.",
+          "Homes, halls, gardens and mosques across Sydney are all common. Many families prefer the lounge room with twenty people to a large hall.",
         ],
       },
       {

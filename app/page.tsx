@@ -117,7 +117,7 @@ export default function HomePage() {
             <li>Registered Australian Marriage Celebrant</li>
             <li>Nikah Conducted by a Qazi</li>
             <li>Legal Civil Marriage</li>
-            <li>Nikah Nama Provided</li>
+            <li>Nikah Certificate Provided</li>
             <li>Sydney &amp; NSW</li>
           </ul>
         </div>
@@ -256,7 +256,7 @@ export default function HomePage() {
               className="lead prose reveal"
               style={{ transitionDelay: "120ms", marginBottom: "3.5rem" }}
             >
-              Homes in Punchbowl, masjids in Lakemba, gardens on the Georges
+              Homes in Punchbowl, mosques in Lakemba, gardens on the Georges
               River. Every family is different, and every ceremony is prepared
               for them.
             </p>

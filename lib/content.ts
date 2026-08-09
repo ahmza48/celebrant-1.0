@@ -14,7 +14,7 @@ export const nikahIncludes = [
   {
     name: "Mahr & the Contract",
     blurb:
-      "Agreed openly in front of witnesses and written into your Nikah nama.",
+      "Agreed openly in front of witnesses and written into your Nikah Certificate.",
   },
   {
     name: "Wali & Witnesses",
@@ -29,7 +29,7 @@ export const nikahIncludes = [
   {
     name: "Your Venue",
     blurb:
-      "At home, at the masjid, in a hall or a garden — anywhere across Sydney and NSW.",
+      "At home, at the mosque, in a hall or a garden — anywhere across Sydney and NSW.",
   },
 ] as const;
 
@@ -52,7 +52,7 @@ export const journey = [
   {
     step: "IV",
     title: "Legally Married",
-    body: "You sign the Nikah nama and the marriage certificates with your two witnesses. Your marriage is registered with Births, Deaths and Marriages NSW.",
+    body: "You sign the Nikah certificate and the marriage certificates with your two witnesses. Your marriage is registered with Births, Deaths and Marriages NSW.",
   },
 ] as const;
 
@@ -154,7 +154,7 @@ export const galleryFilters: { id: GalleryCategory | "all"; label: string }[] = 
   { id: "all", label: "All" },
   { id: "nikah", label: "The Nikah" },
   { id: "signing", label: "Signing" },
-  { id: "mosque", label: "At the Masjid" },
+  { id: "mosque", label: "At the Mosque" },
   { id: "home", label: "At Home" },
   { id: "family", label: "Families" },
 ];
@@ -163,7 +163,7 @@ export const gallery: GalleryItem[] = [
   /* [CONFIRM WITH CLIENT] captions — the client's own photographs. Wording
      describes only what is visible; confirm names, venues and suburbs. */
   { seed: "client-nikah-ceremony", term: "nikah ceremony", caption: "Conducting a Nikah, the groom and the wali either side", category: "nikah", w: 1179, h: 557 },
-  { seed: "client-masjid-certificate", term: "masjid marriage certificate", caption: "Outside the masjid with the marriage certificate", category: "mosque", w: 1168, h: 1600 },
+  { seed: "client-mosque-certificate", term: "mosque marriage certificate", caption: "Outside the mosque with the marriage certificate", category: "mosque", w: 1168, h: 1600 },
   /* landscape in a 4:5 homepage tile — a centred crop cuts the bride off the
      right edge, so bias the focal point to keep all three in frame */
   { seed: "client-office-signing", term: "marriage paperwork", caption: "Completing the marriage paperwork with a couple", category: "signing", w: 1014, h: 865, focal: "59% center" },
@@ -177,11 +177,11 @@ export const gallery: GalleryItem[] = [
   { seed: "home-garden-11", term: "garden ceremony", caption: "A garden Nikah in the backyard", category: "home", w: 800, h: 1080 },
   { seed: "mahr-12", term: "wedding rings gold", caption: "The Mahr, agreed and recorded", category: "nikah", w: 800, h: 620 },
   { seed: "quran-rings-13", term: "wedding rings quran", caption: "Rings beside the Nikah register", category: "nikah", w: 800, h: 980 },
-  { seed: "minaret-14", term: "mosque minaret", caption: "Arriving at the masjid", category: "mosque", w: 800, h: 640 },
+  { seed: "minaret-14", term: "mosque minaret", caption: "Arriving at the mosque", category: "mosque", w: 800, h: 640 },
   { seed: "elders-15", term: "elderly hands family", caption: "The wali gives his consent", category: "family", w: 800, h: 1020 },
   { seed: "certificate-16", term: "marriage certificate documents", caption: "Registered with BDM NSW", category: "signing", w: 800, h: 600 },
   { seed: "home-tea-17", term: "family tea gathering", caption: "Tea after the ceremony, Punchbowl", category: "home", w: 800, h: 1040 },
   { seed: "arch-light-18", term: "mosque arch light", caption: "Waiting for the ceremony to begin", category: "mosque", w: 800, h: 660 },
-  { seed: "calligraphy-19", term: "islamic calligraphy gold", caption: "The Nikah nama, hand-ruled", category: "nikah", w: 800, h: 960 },
+  { seed: "calligraphy-19", term: "islamic calligraphy gold", caption: "The Nikah certificate, hand-ruled", category: "nikah", w: 800, h: 960 },
   { seed: "couple-silhouette-20", term: "muslim couple silhouette", caption: "After the Nikah, Georges River", category: "family", w: 800, h: 620 },
 ];
