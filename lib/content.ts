@@ -167,10 +167,12 @@ export const gallery: GalleryItem[] = [
   /* landscape in a 4:5 homepage tile — a centred crop cuts the bride off the
      right edge, so bias the focal point to keep all three in frame */
   { seed: "client-office-signing", term: "marriage paperwork", caption: "Completing the marriage paperwork with a couple", category: "signing", w: 1014, h: 865, focal: "59% center" },
-  { seed: "civil-signing-04", term: "wedding signing certificate", caption: "The legal certificates, Bankstown", category: "signing", w: 800, h: 620 },
-  { seed: "khutbah-05", term: "islamic ceremony gathering", caption: "The khutbah before the Ijab and Qubool", category: "nikah", w: 800, h: 1000 },
-  { seed: "mosque-dome-06", term: "mosque dome interior", caption: "Light through the dome, Lakemba", category: "mosque", w: 800, h: 640 },
-  { seed: "home-nikah-07", term: "family gathering home", caption: "A Nikah in the family lounge room", category: "home", w: 800, h: 1050 },
+  { seed: "client-marriage-register", term: "australian marriage register", caption: "With the groom and the Australian marriage register", category: "signing", w: 1500, h: 2000 },
+  { seed: "client-khutbah", term: "nikah khutbah address", caption: "Addressing the families before the Ijab and Qubool", category: "nikah", w: 1179, h: 1012 },
+  { seed: "client-rings", term: "nikah ring exchange", caption: "Exchanging rings after the Nikah", category: "nikah", w: 1028, h: 1334 },
+  /* all three subjects span the full width, so a 4:5 tile crop trims the outer
+     shoulders — the faces sit well inside a centred crop */
+  { seed: "client-groom-party", term: "groom celebrant witness", caption: "The groom with the celebrant and his witness", category: "family", w: 1179, h: 1177 },
   { seed: "witnesses-08", term: "wedding witnesses signing", caption: "Two witnesses, as the law requires", category: "signing", w: 800, h: 600 },
   { seed: "lantern-09", term: "arabic lanterns gold", caption: "An evening Nikah, Greenacre", category: "nikah", w: 800, h: 1000 },
   { seed: "family-prayer-10", term: "family prayer gathering", caption: "Both families together afterwards", category: "family", w: 800, h: 660 },
