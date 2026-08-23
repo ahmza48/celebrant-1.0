@@ -56,81 +56,7 @@ export const journey = [
   },
 ] as const;
 
-/* PLACEHOLDER — REPLACE WITH REAL REVIEWS */
-export const testimonials = [
-  {
-    quote:
-      "He explained every step of the paperwork to my parents in a way they understood. The Nikah felt proper and the legal side was handled quietly in the background.",
-    who: "Amina & Yusuf",
-    kind: "Nikah + Civil",
-  },
-  {
-    quote:
-      "We had our Nikah overseas years ago and never registered it here. He sorted the whole thing without making us feel foolish for leaving it so long.",
-    who: "Sadia & Kamran",
-    kind: "Registering an Existing Nikah",
-  },
-  {
-    quote:
-      "Warm, calm and never rushed. On the day he made my grandmother feel like the most important person in the room.",
-    who: "Fatima & Bilal",
-    kind: "Islamic Nikah",
-  },
-  {
-    quote:
-      "He sat with both fathers and went through the Mahr properly, so it was agreed and written down before the day. That saved a lot of awkwardness.",
-    who: "Hafsa & Tariq",
-    kind: "Mahr & Contract",
-  },
-  {
-    quote:
-      "He answered my messages the same day, every time. When you are planning from overseas that matters more than anything.",
-    who: "Nadia & Omar",
-    kind: "Overseas Couple",
-  },
-  {
-    quote:
-      "The whole Nikah was in our lounge room with about twenty people. It still felt like the most important day of our lives.",
-    who: "Ruqayya & Adnan",
-    kind: "Nikah at Home",
-  },
-  {
-    quote:
-      "My English is not strong. He slowed down, repeated things and made sure I understood what I was signing.",
-    who: "Mariam K.",
-    kind: "Islamic Nikah",
-  },
-  {
-    quote:
-      "We booked six weeks out and thought it was impossible. He lodged our NOIM in time and kept us calm.",
-    who: "Khadija & Ismail",
-    kind: "NOIM & Documents",
-  },
-  {
-    quote:
-      "No pressure, no upselling. He told us exactly what the law required and what was optional.",
-    who: "Hassan & Layla",
-    kind: "Nikah + Civil",
-  },
-  {
-    quote:
-      "I reverted last year and was worried the Nikah would feel like something happening around me. He explained each part as it happened.",
-    who: "Aisha & Musa",
-    kind: "Islamic Nikah",
-  },
-  {
-    quote:
-      "He travelled out to us and did not make a fuss about the distance. The whole family noticed.",
-    who: "The Rahman Family",
-    kind: "Nikah at Home",
-  },
-  {
-    quote:
-      "Everything arrived from Births, Deaths and Marriages without a single problem. He followed up to check.",
-    who: "Zainab & Ali",
-    kind: "Nikah + Civil",
-  },
-] as const;
+export const testimonials = [] as const;
 
 export type GalleryCategory =
   | "nikah"
@@ -160,8 +86,8 @@ export const galleryFilters: { id: GalleryCategory | "all"; label: string }[] = 
 ];
 
 export const gallery: GalleryItem[] = [
-  /* [CONFIRM WITH CLIENT] captions — the client's own photographs. Wording
-     describes only what is visible; confirm names, venues and suburbs. */
+  /* Captions describe only what is visible; add confirmed names, venues and
+     suburbs only after client approval. */
   { seed: "client-nikah-ceremony", term: "nikah ceremony", caption: "Conducting a Nikah, the groom and the wali either side", category: "nikah", w: 1179, h: 557 },
   { seed: "client-mosque-certificate", term: "mosque marriage certificate", caption: "Outside the mosque with the marriage certificate", category: "mosque", w: 1168, h: 1600 },
   /* landscape in a 4:5 homepage tile — a centred crop cuts the bride off the

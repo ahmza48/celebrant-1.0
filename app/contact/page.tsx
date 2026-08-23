@@ -11,10 +11,19 @@ import { site } from "@/lib/site";
 import { CELEBRANT_PORTRAIT, CELEBRANT_PORTRAIT_FALLBACK } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Get in Touch",
+  title: "Contact Qazi Marriage Celebrant Sydney",
   description:
-    "Enquire about your Nikah, your legal registration or your NOIM in Sydney. WhatsApp +61 475 409 700 or send the enquiry form — we reply within 24 hours.",
-  alternates: { canonical: "/contact" },
+    "Contact Qazi Marriage Celebrant about Islamic Nikah ceremonies, legal marriage registration or NOIM paperwork help in Sydney and NSW.",
+  alternates: { canonical: `${site.url}/contact` },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/contact`,
+    title: "Contact Qazi Marriage Celebrant Sydney",
+    description:
+      "Enquire about Islamic Nikah ceremonies, legal marriage registration or NOIM paperwork help in Sydney and NSW.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
 };
 
 const MAP_SRC =
@@ -25,7 +34,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="◆ Start the Conversation"
-        title="Get in Touch"
+        title="Contact Qazi Marriage Celebrant Sydney"
         sub="We respond within 24 hours."
         crumb="Contact"
         variant="light"

@@ -9,17 +9,22 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Islamic Nikah & Legal Marriage in Sydney`,
+    default: "Islamic Nikah & Legal Marriage Celebrant Sydney",
     template: `%s | ${site.name}`,
   },
-  description: site.subTagline,
+  description:
+    "Qazi Marriage Celebrant provides Islamic Nikah ceremonies and Australian legal marriage registration for Muslim couples across Sydney and NSW.",
+  alternates: {
+    canonical: site.url,
+  },
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: site.name,
-    title: `${site.name} — Islamic Nikah & Legal Marriage in Sydney`,
+    url: site.url,
+    title: "Islamic Nikah & Legal Marriage Celebrant Sydney",
     description:
-      "Your Nikah conducted by a qazi and your marriage registered legally in Australia — one ceremony, one celebrant. Serving Muslim families across Sydney and NSW.",
+      "Islamic Nikah ceremonies and Australian legal marriage registration for Muslim couples across Sydney and NSW.",
   },
 };
 

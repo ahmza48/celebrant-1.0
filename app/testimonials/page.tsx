@@ -3,15 +3,23 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Photo from "@/components/Photo";
 import { SectionDivider, PatternLayer } from "@/components/Ornaments";
-import { testimonials } from "@/lib/content";
 import { photo, fallbackPhoto } from "@/lib/images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "What Families Say",
+  title: "Client Testimonials for Nikah Ceremonies",
   description:
-    "Words from Muslim couples and families across Sydney about their Nikah, their legal registration and the paperwork that came with it.",
-  alternates: { canonical: "/testimonials" },
+    "Confirmed client testimonials for Qazi Marriage Celebrant will be added after review wording is approved by the families.",
+  alternates: { canonical: `${site.url}/testimonials` },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/testimonials`,
+    title: "Client Testimonials for Nikah Ceremonies",
+    description:
+      "Confirmed client testimonials for Qazi Marriage Celebrant will be added after review wording is approved.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
 };
 
 export default function TestimonialsPage() {
@@ -19,30 +27,20 @@ export default function TestimonialsPage() {
     <>
       <PageHero
         eyebrow="◆ Words from Families"
-        title="What Families Say"
-        sub="Couples, parents and grandparents, in their own words."
+        title="Client Testimonials for Nikah Ceremonies"
+        sub="Confirmed reviews will be added after the wording is approved by the families."
         crumb="Testimonials"
         variant="light"
       />
 
-      {/* PLACEHOLDER — REPLACE WITH REAL REVIEWS */}
       <section className="section bg-ivory">
-        <div className="container">
-          <div className="grid grid-3">
-            {testimonials.map((item, i) => (
-              <figure
-                key={item.who}
-                className="quote-card reveal"
-                style={{ transitionDelay: `${(i % 3) * 120}ms`, margin: 0 }}
-              >
-                <blockquote>“{item.quote}”</blockquote>
-                <figcaption>
-                  <div className="who">{item.who}</div>
-                  <div className="kind">{item.kind}</div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+        <div className="container center">
+          <p className="eyebrow reveal">Reviews</p>
+          <h2 className="section-heading reveal">Verified Client Words Coming Soon</h2>
+          <p className="lead prose reveal" style={{ transitionDelay: "120ms" }}>
+            This page is reserved for confirmed testimonials only. No client names,
+            reviews or ratings are published until they have been approved.
+          </p>
         </div>
       </section>
 
@@ -75,34 +73,31 @@ export default function TestimonialsPage() {
 
       <SectionDivider />
 
-      {/* ---------- Google review CTA ---------- */}
+      {/* ---------- Enquiry CTA ---------- */}
       <section className="section bg-cream pattern cert-border">
         <PatternLayer onLight />
         <div className="container center">
-          <p className="eyebrow reveal">◆ Already Married by Us?</p>
+          <p className="eyebrow reveal">◆ Planning Your Ceremony?</p>
           <h2 className="section-heading reveal">
-            Happy with Your Ceremony? Leave a Google Review.
+            Talk Through Your Nikah or Legal Marriage Plans
           </h2>
           <p className="lead prose reveal" style={{ transitionDelay: "120ms" }}>
-            A short review helps the next family decide. It takes about a
-            minute.
+            Send your date, suburb and ceremony type. You will receive clear
+            guidance on availability and next steps.
           </p>
           <div className="btn-row reveal" style={{ marginTop: "2.25rem" }}>
-            {/* [CONFIRM WITH CLIENT — Google Business review link] */}
-            <a
-              className="btn btn-gold"
-              href="#"
-              aria-describedby="review-note"
-            >
-              Write a Google Review
-            </a>
-            <Link href="/contact" className="btn btn-outline">
+            <Link href="/contact" className="btn btn-gold">
               Contact Us
             </Link>
+            <a
+              className="btn btn-outline"
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp Us
+            </a>
           </div>
-          <p id="review-note" className="quiet" style={{ marginTop: "1.25rem" }}>
-            Link to be added — [CONFIRM WITH CLIENT: Google Business profile]
-          </p>
           <p className="lead prose reveal" style={{ marginTop: "2.5rem" }}>
             Planning your own ceremony? Send your date to {site.phoneDisplay} on
             WhatsApp.

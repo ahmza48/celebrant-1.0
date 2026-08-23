@@ -7,18 +7,65 @@ import { faqGroups } from "@/lib/faq";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
+  title: "Islamic Nikah & Marriage FAQ Sydney",
   description:
-    "Answers on NOIM timing, documents, witnesses, whether a Nikah is legally recognised in Australia, ceremony length, faiths served, bookings and fees.",
-  alternates: { canonical: "/faq" },
+    "Answers for Sydney couples about Islamic Nikah ceremonies, NOIM timing, legal marriage paperwork, witnesses, documents, bookings and fees.",
+  alternates: { canonical: `${site.url}/faq` },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/faq`,
+    title: "Islamic Nikah & Marriage FAQ Sydney",
+    description:
+      "Answers about Islamic Nikah ceremonies, NOIM timing, legal marriage paperwork, witnesses and bookings in Sydney.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
+};
+
+const faqSchemaItems = faqGroups
+  .flatMap((group) => group.items)
+  .map((item) => ({
+    question: item.q,
+    answer: item.a.map((answer) => answer.trim()).filter(Boolean).join(" "),
+  }))
+  .filter((item) => item.answer.length > 0);
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "@id": `${site.url}/faq#faq`,
+      mainEntity: faqSchemaItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${site.url}/faq#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+        { "@type": "ListItem", position: 2, name: "FAQ", item: `${site.url}/faq` },
+      ],
+    },
+  ],
 };
 
 export default function FaqPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         eyebrow="◆ Before You Book"
-        title="Frequently Asked Questions"
+        title="Islamic Nikah & Marriage FAQ"
         sub="The questions families ask most, answered plainly."
         crumb="FAQ"
         imageTerm="islamic geometric pattern"

@@ -12,14 +12,24 @@ import {
   CrownMark,
 } from "@/components/Ornaments";
 import { services, pricing } from "@/lib/services";
+import { seoServicePages } from "@/lib/seo-pages";
 import { photo, fallbackPhoto } from "@/lib/images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: "Islamic Nikah & Marriage Celebrant Services Sydney",
   description:
-    "Islamic Nikah, Nikah with legal civil marriage, registering an existing Nikah, Mahr and contract guidance, pre-marriage sessions, overseas couples, and standalone NOIM help across Sydney and NSW.",
-  alternates: { canonical: "/services" },
+    "Islamic Nikah ceremonies, legal Australian marriage registration, existing Nikah guidance, NOIM paperwork help and Muslim celebrant services across Sydney and NSW.",
+  alternates: { canonical: `${site.url}/services` },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/services`,
+    title: "Islamic Nikah & Marriage Celebrant Services Sydney",
+    description:
+      "Islamic Nikah ceremonies, legal marriage registration and NOIM paperwork guidance across Sydney and NSW.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
 };
 
 export default function ServicesPage() {
@@ -27,8 +37,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="◆ What We Offer"
-        title="Our Services"
-        sub="The Nikah conducted properly, and Australian legal registration handled for you."
+        title="Islamic Nikah & Marriage Celebrant Services in Sydney"
+        sub="The Nikah conducted with care, and Australian legal registration handled clearly."
         crumb="Services"
         imageTerm="mosque architecture arch"
         imageSeed="services-hero"
@@ -87,6 +97,35 @@ export default function ServicesPage() {
           </section>
         </div>
       ))}
+
+      <section className="section bg-ivory">
+        <div className="container">
+          <div className="center">
+            <p className="eyebrow reveal">Sydney Service Routes</p>
+            <h2 className="section-heading reveal">
+              Find the Right Nikah or Marriage Service
+            </h2>
+            <p className="lead prose reveal" style={{ transitionDelay: "120ms", marginBottom: "3rem" }}>
+              These focused pages answer the common questions couples ask before booking.
+            </p>
+          </div>
+          <div className="grid grid-3">
+            {seoServicePages.map((page, i) => (
+              <article
+                className="arch-card reveal"
+                key={page.slug}
+                style={{ transitionDelay: `${(i % 3) * 120}ms` }}
+              >
+                <h3>{page.h1}</h3>
+                <p>{page.description}</p>
+                <Link href={`/${page.slug}`} className="link-more">
+                  View service <span aria-hidden="true">-&gt;</span>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <SectionDivider />
 
