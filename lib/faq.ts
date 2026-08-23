@@ -39,7 +39,7 @@ export const faqGroups: FaqGroup[] = [
         q: "Can you marry overseas nationals visiting Australia?",
         a: [
           "In general, a couple can marry in Australia on a visitor visa, provided both parties meet the requirements of the Marriage Act and can produce the required documents.",
-          "Visa status, document translation and how the marriage will be recognised in your home country all vary case by case. [CONFIRM WITH CLIENT] Please ask before you book flights.",
+          "Visa status, document translation and how the marriage will be recognised in your home country all vary case by case. Please ask before you book flights.",
         ],
       },
     ],
@@ -78,7 +78,7 @@ export const faqGroups: FaqGroup[] = [
       {
         q: "What languages are ceremonies conducted in?",
         a: [
-          "[CONFIRM WITH CLIENT — languages spoken.] If you need a particular language for the benefit of your elders, please ask when you enquire.",
+          "If you need a particular language for the benefit of your elders, please ask when you enquire.",
         ],
       },
     ],
@@ -118,7 +118,7 @@ export const faqGroups: FaqGroup[] = [
         q: "I have recently reverted to Islam. Is that a problem?",
         a: [
           "Not at all. Reverts are very welcome, and the pre-marriage session is often the most useful part of the process — a chance to ask questions without an audience.",
-          "If there are specific questions about your circumstances or your family's situation, raise them at the consultation. [CONFIRM WITH CLIENT]",
+          "If there are specific questions about your circumstances or your family's situation, raise them at the consultation.",
         ],
       },
     ],
@@ -150,13 +150,13 @@ export const faqGroups: FaqGroup[] = [
       {
         q: "What is included in the fee?",
         a: [
-          "[CONFIRM WITH CLIENT — what each fee covers, including consultation, NOIM lodgement, certificates and travel.]",
+          "The exact inclusions are confirmed in writing before booking, based on the ceremony type, date and location.",
         ],
       },
       {
         q: "How do we pay?",
         a: [
-          "[CONFIRM WITH CLIENT — accepted payment methods, deposit amount and when the balance is due.]",
+          "Payment arrangements are confirmed during enquiry before booking.",
         ],
       },
     ],

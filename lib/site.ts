@@ -1,7 +1,6 @@
 export const site = {
   name: "Qazi Marriage Celebrant",
-  // [CONFIRM WITH CLIENT] — celebrant's full name
-  celebrant: "Sheikh M. Hanieh [CONFIRM WITH CLIENT]",
+  celebrant: "Qazi Marriage Celebrant",
   tagline: "We Cater for All Your Marriage Needs",
   subTagline:
     "Islamic Marriage Celebrant · Legal Civil Marriage Registered in Australia",
@@ -15,7 +14,7 @@ export const site = {
   addressLine: "Punchbowl, Sydney NSW",
   serviceArea: "All Sydney and Greater NSW",
   responseTime: "Within 24 hours",
-  url: "https://qazimarriagecelebrant.com.au",
+  url: "https://qazi.com.au",
 } as const;
 
 export const social = [

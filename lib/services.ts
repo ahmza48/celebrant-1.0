@@ -103,7 +103,7 @@ export const services: Service[] = [
     paragraphs: [
       "Before the Nikah, most couples benefit from an unhurried conversation about what marriage actually asks of them. This is not counselling for a problem. It is a session — or two, if you want — covering the rights and responsibilities each spouse takes on in Islam, how households make decisions, how money is handled, and what both families expect once the celebrations are over.",
       "Younger couples often come with very different assumptions about living arrangements, extended family, work and study, and never test them until after the wedding. Talking these through beforehand, with someone outside both families in the room, is far easier than repairing them later. Everything discussed is private and stays between the three of you. Nothing is reported back to either set of parents.",
-      "Sessions can be together or separately, in person in Punchbowl or by phone or video if one of you is overseas. Reverts to Islam are very welcome and often find it the most useful part of the whole process, because it is a chance to ask questions without an audience. [CONFIRM WITH CLIENT — whether this is included in the ceremony fee or charged separately.]",
+      "Sessions can be together or separately, in person in Punchbowl or by phone or video if one of you is overseas. Reverts to Islam are very welcome and often find it the most useful part of the whole process, because it is a chance to ask questions without an audience. Ask during enquiry whether this is included in your ceremony quote.",
     ],
     includes: [
       "Rights and responsibilities of each spouse in Islam",
@@ -123,7 +123,7 @@ export const services: Service[] = [
     paragraphs: [
       "When one of you is overseas, or arriving on a visitor visa for the wedding, the timing becomes the hardest part. The Notice of Intended Marriage must reach your celebrant at least one month and one day before the ceremony — and it can be signed and witnessed abroad by an authorised person, such as an Australian consular officer, a notary public or a qualified medical practitioner, then sent ahead. Start this before you book flights, not after.",
       "Documents cause the other delays. Each party needs an original birth certificate or a current passport, and anything not in English needs an accredited translation. If either of you has been married before, the original divorce order or death certificate must be sighted. Overseas certificates can take weeks to obtain and weeks again to translate. Send photographs of what you have at the enquiry stage and you will be told what is missing while there is still time.",
-      "What happens after the ceremony matters too. Your Australian marriage certificate from Births, Deaths and Marriages NSW is the document Home Affairs will want for a partner visa application, and some overseas authorities require it to be apostilled before they will recognise it. Advice here is limited to the marriage itself — for visa questions, see a registered migration agent. [CONFIRM WITH CLIENT] Do not book non-refundable flights until your date is confirmed.",
+      "What happens after the ceremony matters too. Your Australian marriage certificate from Births, Deaths and Marriages NSW is the document Home Affairs will want for a partner visa application, and some overseas authorities require it to be apostilled before they will recognise it. Advice here is limited to the marriage itself — for visa questions, see a registered migration agent. Do not book non-refundable flights until your date is confirmed.",
     ],
     includes: [
       "NOIM signed and witnessed overseas, then sent ahead",
@@ -159,7 +159,7 @@ export const services: Service[] = [
 export const pricing = [
   {
     tier: "Nikah Only",
-    price: "[CONFIRM WITH CLIENT]",
+    price: "Quoted on enquiry",
     note: "Religious ceremony, no legal registration",
     features: [
       "Khutbah, Ijab and Qubool",
@@ -172,7 +172,7 @@ export const pricing = [
   },
   {
     tier: "Nikah + Legal Marriage",
-    price: "[CONFIRM WITH CLIENT]",
+    price: "Quoted on enquiry",
     note: "The arrangement most families choose",
     features: [
       "Everything in Nikah Only",
@@ -185,7 +185,7 @@ export const pricing = [
   },
   {
     tier: "Legal Registration Only",
-    price: "[CONFIRM WITH CLIENT]",
+    price: "Quoted on enquiry",
     note: "For couples whose Nikah has already taken place",
     features: [
       "Your existing Nikah respected as it stands",

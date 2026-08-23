@@ -14,17 +14,26 @@ import { site } from "@/lib/site";
 import { CELEBRANT_PORTRAIT, CELEBRANT_PORTRAIT_FALLBACK } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Meet the Qazi",
+  title: "Qazi Marriage Celebrant in Sydney",
   description:
-    "A qazi and registered Australian marriage celebrant based in Punchbowl, Sydney — conducting the Nikah with full Islamic integrity and registering your marriage under the Marriage Act 1961.",
-  alternates: { canonical: "/about" },
+    "Learn about Qazi Marriage Celebrant, a qazi and registered Australian marriage celebrant based in Punchbowl and serving Muslim families across Sydney and NSW.",
+  alternates: { canonical: `${site.url}/about` },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/about`,
+    title: "Qazi Marriage Celebrant in Sydney",
+    description:
+      "A qazi and registered Australian marriage celebrant based in Punchbowl and serving Muslim families across Sydney and NSW.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
 };
 
 const badges = [
-  "Registered Marriage Celebrant · Marriage Act 1961",
-  "BDM NSW Registration No. [CONFIRM WITH CLIENT]",
-  "Qazi — Islamic scholar [CONFIRM WITH CLIENT]",
-  "Serving Sydney since [CONFIRM WITH CLIENT]",
+  "Australian marriage celebrant guidance",
+  "Islamic Nikah ceremonies",
+  "NOIM and legal paperwork support",
+  "Serving Sydney and greater NSW",
   "Based in Punchbowl, NSW",
 ];
 
@@ -62,7 +71,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="◆ Your Celebrant"
-        title="Meet the Qazi"
+        title="Qazi Marriage Celebrant in Sydney"
         sub="A trained Islamic scholar and a registered Australian marriage celebrant — both, in one person."
         crumb="About"
         variant="light"
@@ -206,9 +215,8 @@ export default function AboutPage() {
           </div>
 
           <p className="lead prose reveal">
-            Ceremonies are conducted in [CONFIRM WITH CLIENT — languages
-            spoken]. If you need a particular language on the day, ask when you
-            enquire and it will be arranged where possible.
+            If you need a particular language on the day, ask when you enquire
+            and it will be arranged where possible.
           </p>
 
           <div className="btn-row reveal" style={{ marginTop: "2.5rem" }}>

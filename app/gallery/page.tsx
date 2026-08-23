@@ -8,10 +8,19 @@ import { photo, fallbackPhoto } from "@/lib/images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Ceremonies Across Sydney",
+  title: "Nikah Ceremony Gallery Sydney",
   description:
-    "Nikah ceremonies conducted across Sydney and greater NSW — in homes, mosques, halls and gardens, with the legal signing handled on the day.",
-  alternates: { canonical: "/gallery" },
+    "View examples of Nikah and marriage ceremony settings across Sydney and greater NSW, including homes, mosques, halls and gardens.",
+  alternates: { canonical: `${site.url}/gallery` },
+  openGraph: {
+    type: "website",
+    url: `${site.url}/gallery`,
+    title: "Nikah Ceremony Gallery Sydney",
+    description:
+      "Examples of Nikah and marriage ceremony settings across Sydney and greater NSW.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
 };
 
 export default function GalleryPage() {
@@ -19,7 +28,7 @@ export default function GalleryPage() {
     <>
       <PageHero
         eyebrow="◆ Ceremonies Across Sydney"
-        title="Ceremonies Across Sydney"
+        title="Nikah Ceremony Gallery Sydney"
         sub="Homes, mosques, halls and gardens — every Nikah prepared for the family in front of us."
         crumb="Gallery"
         imageTerm="islamic wedding"

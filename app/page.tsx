@@ -17,7 +17,8 @@ import {
   CrownMark,
 } from "@/components/Ornaments";
 import { site } from "@/lib/site";
-import { nikahIncludes, journey, testimonials, gallery } from "@/lib/content";
+import { nikahIncludes, journey, gallery } from "@/lib/content";
+import { seoServicePages } from "@/lib/seo-pages";
 import {
   photo,
   fallbackPhoto,
@@ -26,26 +27,51 @@ import {
 } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Qazi Marriage Celebrant — Islamic Nikah & Legal Marriage in Sydney",
+  title: "Islamic Nikah & Legal Marriage Celebrant Sydney",
   description:
-    "A qazi and registered Australian marriage celebrant in Punchbowl, Sydney. Your Nikah conducted with full Islamic integrity and your marriage registered legally — in one ceremony.",
-  alternates: { canonical: "/" },
+    "Qazi Marriage Celebrant provides Islamic Nikah ceremonies and Australian legal marriage registration for Muslim couples across Sydney and NSW.",
+  alternates: { canonical: site.url },
+  openGraph: {
+    type: "website",
+    url: site.url,
+    title: "Islamic Nikah & Legal Marriage Celebrant Sydney",
+    description:
+      "Islamic Nikah ceremonies and Australian legal marriage registration for Muslim couples across Sydney and NSW.",
+    siteName: site.name,
+    locale: "en_AU",
+  },
 };
 
-const localBusiness = {
+const homeSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: site.name,
-  description: site.subTagline,
-  telephone: "+61475409700",
-  email: site.email,
-  areaServed: "Sydney and New South Wales, Australia",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Punchbowl",
-    addressRegion: "NSW",
-    addressCountry: "AU",
-  },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
+      email: site.email,
+      telephone: "+61475409700",
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${site.url}/#localbusiness`,
+      name: site.name,
+      description:
+        "Islamic Nikah ceremonies and Australian legal marriage registration for Muslim couples across Sydney and NSW.",
+      url: site.url,
+      telephone: "+61475409700",
+      email: site.email,
+      areaServed: "Sydney and New South Wales, Australia",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.suburb,
+        addressRegion: site.region,
+        addressCountry: "AU",
+      },
+      parentOrganization: { "@id": `${site.url}/#organization` },
+    },
+  ],
 };
 
 const previewImages = gallery.slice(1, 7);
@@ -55,7 +81,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
 
       {/* ---------- 1. Hero ---------- */}
@@ -82,8 +108,8 @@ export default function HomePage() {
           </p>
 
           <h1 className="hero-in">
-            Bringing Hearts Together
-            <span className="h1-line2">Through the Blessings of Nikah</span>
+            Islamic Nikah &amp; Legal Marriage Celebrant in Sydney
+            <span className="h1-line2">Faithful Ceremony. Legal Registration.</span>
           </h1>
 
           <GoldRule
@@ -206,6 +232,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section bg-ivory">
+        <div className="container">
+          <div className="center">
+            <p className="eyebrow reveal">Sydney Service Pages</p>
+            <h2 className="section-heading reveal">
+              Nikah and Marriage Help Across Sydney
+            </h2>
+            <p className="lead prose reveal" style={{ transitionDelay: "120ms", marginBottom: "3rem" }}>
+              Choose the guidance that matches where you are in the marriage process.
+            </p>
+          </div>
+          <div className="grid grid-3">
+            {seoServicePages.map((page, i) => (
+              <article
+                className="arch-card reveal"
+                key={page.slug}
+                style={{ transitionDelay: `${(i % 3) * 120}ms` }}
+              >
+                <h3>{page.h1}</h3>
+                <p>{page.intro}</p>
+                <Link href={`/${page.slug}`} className="link-more">
+                  Read more <span aria-hidden="true">-&gt;</span>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ---------- 4. Quranic verse band ---------- */}
       <VerseBand />
 
@@ -311,36 +366,20 @@ export default function HomePage() {
           <div className="center">
             <p className="eyebrow reveal">◆ Words from Families</p>
             <h2 className="section-heading reveal">
-              What Families Say Afterwards
+              Verified Client Words Coming Soon
             </h2>
             <p
               className="lead prose reveal"
-              style={{ transitionDelay: "120ms", marginBottom: "3.5rem" }}
+              style={{ transitionDelay: "120ms", marginBottom: "2.5rem" }}
             >
-              A few words from couples and parents across Sydney.
+              Confirmed reviews will be published only after each family approves
+              the wording.
             </p>
-          </div>
-
-          {/* PLACEHOLDER — REPLACE WITH REAL REVIEWS */}
-          <div className="grid grid-3">
-            {testimonials.slice(0, 3).map((item, i) => (
-              <figure
-                key={item.who}
-                className="quote-card reveal"
-                style={{ transitionDelay: `${i * 120}ms`, margin: 0 }}
-              >
-                <blockquote>“{item.quote}”</blockquote>
-                <figcaption>
-                  <div className="who">{item.who}</div>
-                  <div className="kind">{item.kind}</div>
-                </figcaption>
-              </figure>
-            ))}
           </div>
 
           <p className="center" style={{ marginTop: "3rem" }}>
             <Link href="/testimonials" className="link-more">
-              Read More <span aria-hidden="true">→</span>
+              View Testimonials <span aria-hidden="true">→</span>
             </Link>
           </p>
         </div>
