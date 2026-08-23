@@ -17,7 +17,7 @@ import {
   CrownMark,
 } from "@/components/Ornaments";
 import { site } from "@/lib/site";
-import { nikahIncludes, journey, gallery } from "@/lib/content";
+import { nikahIncludes, journey, gallery, testimonials } from "@/lib/content";
 import { seoServicePages } from "@/lib/seo-pages";
 import {
   photo,
@@ -75,6 +75,29 @@ const homeSchema = {
 };
 
 const previewImages = gallery.slice(1, 7);
+
+const servicePreviewImages: Record<string, { src: string; alt: string }> = {
+  "islamic-nikah-sydney": {
+    src: "/assets/ceremony-2.jpg",
+    alt: "Islamic Nikah ceremony in Sydney",
+  },
+  "nikah-legal-marriage-sydney": {
+    src: "/assets/ceremony-3.jpg",
+    alt: "Couple completing their legal marriage paperwork",
+  },
+  "register-existing-nikah-australia": {
+    src: "/assets/mosque-nikah-ceremony.jpeg",
+    alt: "Marriage register at a Sydney Nikah ceremony",
+  },
+  "noim-marriage-paperwork-sydney": {
+    src: "/assets/ceremony-1.jpg",
+    alt: "Couple with their marriage certificate outside a mosque",
+  },
+  "muslim-marriage-celebrant-sydney": {
+    src: "/assets/outdoor-nikah-ceremony.jpeg",
+    alt: "Muslim marriage celebrant with a groom and witness",
+  },
+};
 
 export default function HomePage() {
   return (
@@ -243,18 +266,36 @@ export default function HomePage() {
               Choose the guidance that matches where you are in the marriage process.
             </p>
           </div>
-          <div className="grid grid-3">
+          <div className="service-route-grid">
             {seoServicePages.map((page, i) => (
               <article
-                className="arch-card reveal"
+                className="service-route-card reveal"
                 key={page.slug}
                 style={{ transitionDelay: `${(i % 3) * 120}ms` }}
               >
-                <h3>{page.h1}</h3>
-                <p>{page.intro}</p>
-                <Link href={`/${page.slug}`} className="link-more">
-                  Read more <span aria-hidden="true">-&gt;</span>
+                <Link
+                  href={`/${page.slug}`}
+                  className="service-route-image media"
+                  aria-label={`Read about ${page.h1}`}
+                >
+                  <Photo
+                    src={servicePreviewImages[page.slug].src}
+                    fallback={fallbackPhoto(`service-${page.slug}`, 720, 450)}
+                    alt={servicePreviewImages[page.slug].alt}
+                    width={720}
+                    height={450}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
                 </Link>
+                <div className="service-route-copy">
+                  <h3>
+                    <Link href={`/${page.slug}`}>{page.h1}</Link>
+                  </h3>
+                  <p>{page.intro}</p>
+                  <Link href={`/${page.slug}`} className="link-more">
+                    Read more <span aria-hidden="true">-&gt;</span>
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
@@ -366,15 +407,30 @@ export default function HomePage() {
           <div className="center">
             <p className="eyebrow reveal">◆ Words from Families</p>
             <h2 className="section-heading reveal">
-              Verified Client Words Coming Soon
+              What Families Say Afterwards
             </h2>
             <p
               className="lead prose reveal"
-              style={{ transitionDelay: "120ms", marginBottom: "2.5rem" }}
+              style={{ transitionDelay: "120ms", marginBottom: "3.5rem" }}
             >
-              Confirmed reviews will be published only after each family approves
-              the wording.
+              A few words from couples and parents across Sydney.
             </p>
+          </div>
+
+          <div className="grid grid-3">
+            {testimonials.slice(0, 3).map((item, i) => (
+              <figure
+                key={item.who}
+                className="quote-card reveal"
+                style={{ transitionDelay: `${i * 120}ms`, margin: 0 }}
+              >
+                <blockquote>“{item.quote}”</blockquote>
+                <figcaption>
+                  <div className="who">{item.who}</div>
+                  <div className="kind">{item.kind}</div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
 
           <p className="center" style={{ marginTop: "3rem" }}>

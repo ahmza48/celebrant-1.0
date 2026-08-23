@@ -3,20 +3,21 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Photo from "@/components/Photo";
 import { SectionDivider, PatternLayer } from "@/components/Ornaments";
+import { testimonials } from "@/lib/content";
 import { photo, fallbackPhoto } from "@/lib/images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Client Testimonials for Nikah Ceremonies",
+  title: "What Families Say",
   description:
-    "Confirmed client testimonials for Qazi Marriage Celebrant will be added after review wording is approved by the families.",
+    "Words from Muslim couples and families across Sydney about their Nikah, legal marriage registration and ceremony experience.",
   alternates: { canonical: `${site.url}/testimonials` },
   openGraph: {
     type: "website",
     url: `${site.url}/testimonials`,
-    title: "Client Testimonials for Nikah Ceremonies",
+    title: "What Families Say About Qazi Marriage Celebrant",
     description:
-      "Confirmed client testimonials for Qazi Marriage Celebrant will be added after review wording is approved.",
+      "Words from Muslim couples and families across Sydney about their Nikah and legal marriage ceremony.",
     siteName: site.name,
     locale: "en_AU",
   },
@@ -27,20 +28,29 @@ export default function TestimonialsPage() {
     <>
       <PageHero
         eyebrow="◆ Words from Families"
-        title="Client Testimonials for Nikah Ceremonies"
-        sub="Confirmed reviews will be added after the wording is approved by the families."
+        title="What Families Say"
+        sub="Couples, parents and grandparents, in their own words."
         crumb="Testimonials"
         variant="light"
       />
 
       <section className="section bg-ivory">
-        <div className="container center">
-          <p className="eyebrow reveal">Reviews</p>
-          <h2 className="section-heading reveal">Verified Client Words Coming Soon</h2>
-          <p className="lead prose reveal" style={{ transitionDelay: "120ms" }}>
-            This page is reserved for confirmed testimonials only. No client names,
-            reviews or ratings are published until they have been approved.
-          </p>
+        <div className="container">
+          <div className="grid grid-3">
+            {testimonials.map((item, i) => (
+              <figure
+                key={item.who}
+                className="quote-card reveal"
+                style={{ transitionDelay: `${(i % 3) * 120}ms`, margin: 0 }}
+              >
+                <blockquote>“{item.quote}”</blockquote>
+                <figcaption>
+                  <div className="who">{item.who}</div>
+                  <div className="kind">{item.kind}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 

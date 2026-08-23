@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <title>Qazi Marriage Celebrant</title>
+  <rect width="120" height="120" rx="20" fill="#3b2c12"/>
+  <g fill="none" stroke="#c9a84c" stroke-linecap="round">
+    <circle cx="60" cy="60" r="52" stroke-width="2" opacity="0.75"/>
+    <circle cx="60" cy="60" r="39" stroke-width="2"/>
+    <path d="M60 83l4 4-4 4-4-4z" stroke-width="1.5"/>
+  </g>
+  <text
+    x="60"
+    y="70"
+    fill="#c9a84c"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="30"
+    text-anchor="middle"
+  >Qazi</text>
+</svg>

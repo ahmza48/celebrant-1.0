@@ -1267,6 +1267,86 @@ ul {
   --surface-bg: #f6efdd;
 }
 
+/* Image-led links to the dedicated service pages on the home page. */
+.service-route-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+.service-route-card {
+  grid-column: span 2;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 400ms var(--ease), box-shadow 400ms var(--ease);
+}
+.service-route-card:nth-child(n + 4) {
+  grid-column: span 3;
+}
+.service-route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(26, 26, 26, 0.09);
+}
+.service-route-image {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--sand);
+}
+.service-route-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease);
+}
+.service-route-card:hover .service-route-image img {
+  transform: scale(1.035);
+}
+.service-route-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.service-route-copy h3 {
+  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  line-height: 1.15;
+  margin: 0 0 0.8rem;
+}
+.service-route-copy h3 a {
+  color: var(--heading);
+}
+.service-route-copy p {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+.service-route-copy .link-more {
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .service-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .service-route-card,
+  .service-route-card:nth-child(n + 4) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-route-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 520px) {
   .faith-card h3 {
     font-size: 1.15rem;
