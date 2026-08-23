@@ -41,6 +41,11 @@ const LIBRARY: Record<string, string> = {
   "client-khutbah": "/assets/indoor-nikah-ceremony.jpeg",
   "client-rings": "/assets/nikah-ring-ceremony.jpeg",
   "client-groom-party": "/assets/outdoor-nikah-ceremony.jpeg",
+  "client-paperwork-couple": "/assets/paperwork-with-bride-and-groom.jpg",
+  "client-certificate-handover":
+    "/assets/handing-registration-certificate-to-groom.jpg",
+  "client-family-after-nikah": "/assets/after-nikah-groom-and-family.jpg",
+  "client-with-groom": "/assets/celebrant-with-groom.jpg",
   "witnesses-08": "photo-1646229227468-ba6eb534d368",
   "lantern-09": "photo-1644337111604-aa1816b542a1",
   "family-prayer-10": "photo-1652943055585-0b932b58b7ea",
@@ -68,7 +73,23 @@ export function fallbackPhoto(seed: string, w: number, h: number) {
   return `https://picsum.photos/seed/${encodeURIComponent(seed)}/${w}/${h}`;
 }
 
-export const CELEBRANT_PORTRAIT = "/assets/celebrant.jpg";
+/** The client's own ceremony film — a vertical (9:16) clip, ~53 seconds. */
+export const CEREMONY_VIDEO = "/assets/nikah-ceremony-video.mp4";
+
+/**
+ * The arch slots on the home, about and contact pages are all 4:5, and this
+ * file is cut to 4:5, so it fills them with no crop at all.
+ *
+ * It is derived from /assets/celebrant.jpg, which is a circular avatar cutout
+ * on flat grey: cropping that to 4:5 left the subject a third of the way across
+ * rather than on the centre line, and put grey wedges in the bottom corners of
+ * the arch. This one is re-cut around the face with the eyes a third down, and
+ * the little that falls outside the cutout circle is filled by extending the
+ * photograph past its own edge. Rebuild it from the original if the framing
+ * ever needs to change — better still, replace both with the uncropped
+ * photograph, which needs none of this.
+ */
+export const CELEBRANT_PORTRAIT = "/assets/celebrant-portrait.jpg";
 export const CELEBRANT_PORTRAIT_FALLBACK = fallbackPhoto(
   "qazi-portrait",
   400,

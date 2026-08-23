@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import Photo from "@/components/Photo";
 import GalleryBrowser from "@/components/GalleryBrowser";
 import { SectionDivider, PatternLayer } from "@/components/Ornaments";
-import { photo, fallbackPhoto } from "@/lib/images";
+import { photo, fallbackPhoto, CEREMONY_VIDEO } from "@/lib/images";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function GalleryPage() {
 
       <GalleryBrowser />
 
-      {/* ---------- Video placeholder ---------- */}
+      {/* ---------- Ceremony film ---------- */}
       <section className="section video-band">
         <div className="video-bg" aria-hidden="true">
           <Photo
@@ -50,17 +50,27 @@ export default function GalleryPage() {
           />
         </div>
         <div className="container video-inner center">
-          <span className="play-mark" aria-hidden="true">
-            <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
-              <path d="M2 2l16 10L2 22V2z" fill="currentColor" />
-            </svg>
-          </span>
-          <p className="eyebrow">◆ Coming Soon</p>
+          <p className="eyebrow">◆ Watch a Ceremony</p>
           <h2 className="section-heading">Ceremony Highlight Video</h2>
           <p className="lead prose">
-            A short film of a full ceremony, from the arrival of the families to
-            the signing of the certificates, is being prepared.
+            A short film from a Nikah conducted in Sydney, so you can see how
+            the day is run before you enquire.
           </p>
+          {/* filmed on a phone, so the source is vertical — the frame is sized
+              to its 9:16 shape rather than letterboxing it into a wide band */}
+          <div className="video-frame">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              width={360}
+              height={640}
+              aria-label="Highlight film from a Nikah ceremony"
+            >
+              <source src={CEREMONY_VIDEO} type="video/mp4" />
+              Your browser cannot play this video.
+            </video>
+          </div>
         </div>
       </section>
 
