@@ -173,6 +173,12 @@ export const gallery: GalleryItem[] = [
   /* all three subjects span the full width, so a 4:5 tile crop trims the outer
      shoulders — the faces sit well inside a centred crop */
   { seed: "client-groom-party", term: "groom celebrant witness", caption: "The groom with the celebrant and his witness", category: "family", w: 1179, h: 1177 },
+  /* portraits shot on a phone — tall in a 4:5 tile, so the focal point sits
+     where the faces and the documents are rather than dead centre */
+  { seed: "client-paperwork-couple", term: "marriage paperwork bride groom", caption: "Signing the marriage paperwork with the bride and groom", category: "signing", w: 467, h: 673, focal: "center 40%" },
+  { seed: "client-certificate-handover", term: "marriage registration certificate", caption: "Handing the registration certificate to the groom", category: "signing", w: 472, h: 750, focal: "center 30%" },
+  { seed: "client-family-after-nikah", term: "groom family after nikah", caption: "After the Nikah, with the groom and his family", category: "family", w: 475, h: 631, focal: "center 40%" },
+  { seed: "client-with-groom", term: "celebrant with groom", caption: "With the groom before the ceremony", category: "nikah", w: 476, h: 637, focal: "center 38%" },
   { seed: "witnesses-08", term: "wedding witnesses signing", caption: "Two witnesses, as the law requires", category: "signing", w: 800, h: 600 },
   { seed: "lantern-09", term: "arabic lanterns gold", caption: "An evening Nikah, Greenacre", category: "nikah", w: 800, h: 1000 },
   { seed: "family-prayer-10", term: "family prayer gathering", caption: "Both families together afterwards", category: "family", w: 800, h: 660 },

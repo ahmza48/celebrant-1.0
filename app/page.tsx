@@ -74,28 +74,55 @@ const homeSchema = {
   ],
 };
 
-const previewImages = gallery.slice(1, 7);
+/* No photograph may appear twice on this page. The service cards below take
+   five of the client's photographs; the gallery preview takes the rest — the
+   21:9 band uses gallery[0], and these six fill the tile grid. */
+const previewSeeds = [
+  "client-mosque-certificate",
+  "client-office-signing",
+  "client-khutbah",
+  "client-rings",
+  "client-groom-party",
+  "client-with-groom",
+];
+const previewImages = gallery.filter((item) =>
+  previewSeeds.includes(item.seed),
+);
 
-const servicePreviewImages: Record<string, { src: string; alt: string }> = {
+/* The client's own photography is phone-shot portrait, so a 16:10 card crop
+   takes a band out of the middle — focal keeps the faces and the documents in
+   it. Only the first card has no client photograph of its own yet. */
+const servicePreviewImages: Record<
+  string,
+  { seed: string; term: string; alt: string; focal?: string }
+> = {
   "islamic-nikah-sydney": {
-    src: "/assets/ceremony-2.jpg",
-    alt: "Islamic Nikah ceremony in Sydney",
+    seed: "svc-nikah",
+    term: "islamic nikah ceremony",
+    alt: "An Islamic Nikah ceremony",
   },
   "nikah-legal-marriage-sydney": {
-    src: "/assets/ceremony-3.jpg",
-    alt: "Couple completing their legal marriage paperwork",
+    seed: "client-marriage-register",
+    term: "australian marriage register",
+    alt: "The groom with the Australian marriage register",
   },
   "register-existing-nikah-australia": {
-    src: "/assets/mosque-nikah-ceremony.jpeg",
-    alt: "Marriage register at a Sydney Nikah ceremony",
+    seed: "client-certificate-handover",
+    term: "marriage registration certificate",
+    alt: "Handing the marriage registration certificate to the groom",
+    focal: "center 18%",
   },
   "noim-marriage-paperwork-sydney": {
-    src: "/assets/ceremony-1.jpg",
-    alt: "Couple with their marriage certificate outside a mosque",
+    seed: "client-paperwork-couple",
+    term: "marriage paperwork bride groom",
+    alt: "A bride and groom signing their marriage paperwork at home",
+    focal: "center 38%",
   },
   "muslim-marriage-celebrant-sydney": {
-    src: "/assets/outdoor-nikah-ceremony.jpeg",
-    alt: "Muslim marriage celebrant with a groom and witness",
+    seed: "client-family-after-nikah",
+    term: "groom family after nikah",
+    alt: "The celebrant with the groom and his family after the Nikah",
+    focal: "center 42%",
   },
 };
 
@@ -267,37 +294,41 @@ export default function HomePage() {
             </p>
           </div>
           <div className="service-route-grid">
-            {seoServicePages.map((page, i) => (
-              <article
-                className="service-route-card reveal"
-                key={page.slug}
-                style={{ transitionDelay: `${(i % 3) * 120}ms` }}
-              >
-                <Link
-                  href={`/${page.slug}`}
-                  className="service-route-image media"
-                  aria-label={`Read about ${page.h1}`}
+            {seoServicePages.map((page, i) => {
+              const preview = servicePreviewImages[page.slug];
+              return (
+                <article
+                  className="service-route-card reveal"
+                  key={page.slug}
+                  style={{ transitionDelay: `${(i % 3) * 120}ms` }}
                 >
-                  <Photo
-                    src={servicePreviewImages[page.slug].src}
-                    fallback={fallbackPhoto(`service-${page.slug}`, 720, 450)}
-                    alt={servicePreviewImages[page.slug].alt}
-                    width={720}
-                    height={450}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </Link>
-                <div className="service-route-copy">
-                  <h3>
-                    <Link href={`/${page.slug}`}>{page.h1}</Link>
-                  </h3>
-                  <p>{page.intro}</p>
-                  <Link href={`/${page.slug}`} className="link-more">
-                    Read more <span aria-hidden="true">-&gt;</span>
+                  <Link
+                    href={`/${page.slug}`}
+                    className="service-route-image media"
+                    aria-label={`Read about ${page.h1}`}
+                    style={{ "--focal": preview.focal } as CSSProperties}
+                  >
+                    <Photo
+                      src={photo(preview.term, preview.seed, 720, 450)}
+                      fallback={fallbackPhoto(preview.seed, 720, 450)}
+                      alt={preview.alt}
+                      width={720}
+                      height={450}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </Link>
-                </div>
-              </article>
-            ))}
+                  <div className="service-route-copy">
+                    <h3>
+                      <Link href={`/${page.slug}`}>{page.h1}</Link>
+                    </h3>
+                    <p>{page.intro}</p>
+                    <Link href={`/${page.slug}`} className="link-more">
+                      Read more <span aria-hidden="true">-&gt;</span>
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

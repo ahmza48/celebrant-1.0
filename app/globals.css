@@ -1881,6 +1881,26 @@ ul {
   background: rgba(250, 248, 243, 0.55);
 }
 
+/* the ceremony film is a phone-shot 9:16 clip — frame it at its own shape so
+   it is not letterboxed into the wide band it sits in */
+.video-frame {
+  width: min(100%, 21rem);
+  margin: clamp(2rem, 4vw, 2.75rem) auto 0;
+  padding: 0.5rem;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: rgba(250, 248, 243, 0.55);
+  box-shadow: 0 18px 44px rgba(26, 26, 26, 0.14);
+}
+.video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 2px;
+  background: #1a1a1a;
+}
+
 /* ---------- 15. SERVICES ---------- */
 
 .service {
