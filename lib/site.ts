@@ -14,7 +14,7 @@ export const site = {
   addressLine: "Punchbowl, Sydney NSW",
   serviceArea: "All Sydney and Greater NSW",
   responseTime: "Within 24 hours",
-  url: "https://qazi.com.au",
+  url: "https://www.qazi.com.au",
 } as const;
 
 export const social = [
